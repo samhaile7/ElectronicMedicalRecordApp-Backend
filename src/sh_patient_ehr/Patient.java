@@ -18,5 +18,6 @@ public class Patient {
         this.age = age;
     }
 
+    // Add getters and setters once added all attributes (labs especially)
 
 }
