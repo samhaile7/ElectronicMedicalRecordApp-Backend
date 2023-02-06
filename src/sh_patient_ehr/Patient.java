@@ -7,17 +7,17 @@ public class Patient {
     private String firstName;
     private String lastName;
     private int age;
-    private int idNumber;
+    private int uniqueIdentifier;
 
     //Constructor
 
     public Patient() {};
 
-    public Patient(String firstName, String lastName, int age, int idNumber) {
+    public Patient(String firstName, String lastName, int age, int uniqueIdentifier) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.idNumber = idNumber;
+        this.uniqueIdentifier = uniqueIdentifier;
     }
 
     // Add getters and setters once added all attributes (labs especially)
