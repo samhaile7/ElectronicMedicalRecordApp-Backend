@@ -10,6 +10,9 @@ public class RangeChecker {
     final double MIN_PTT = 0;
     final double MAX_PTT = 0;
     //construct using patient id and lab values
-    //compare lab values to constant ranges, set mobility status
+
+    //update mobility status method(patient) with patient as a parameter
+    // compares current patient lab values(getter from Patient class
+    // to constant ranges, set mobility status
 
 }
