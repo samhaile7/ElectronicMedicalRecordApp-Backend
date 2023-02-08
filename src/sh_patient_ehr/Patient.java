@@ -9,7 +9,7 @@ public class Patient {
     private int age;
     private int uniqueIdentifier;
     private boolean isOnThrombolytics;
-    boolean isClearForMobility;
+    private boolean isClearForMobility;
 
     //attributes for lab values
     //update labs methods with new values as parameters
