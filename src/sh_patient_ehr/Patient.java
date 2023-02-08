@@ -8,6 +8,7 @@ public class Patient {
     private String lastName;
     private int age;
     private int uniqueIdentifier;
+    private boolean isOnThrombolytics;
     boolean clearedForMobility;
 
     //Constructor
