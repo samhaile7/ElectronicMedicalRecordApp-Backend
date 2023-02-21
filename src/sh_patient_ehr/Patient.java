@@ -20,15 +20,15 @@ public class Patient {
     //update labs methods with new values as parameters
     //
 
-    //Constructor
+    //Constructors
 
     public Patient() {};
 
-    public Patient(String firstName, String lastName, int age, int uniqueIdentifier) {
-        this.patientId = patientId;
+    public Patient(String firstName, String lastName, int age, boolean isOnThrombolytics) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+   
         
     }
 
