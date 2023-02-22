@@ -20,4 +20,8 @@ public interface PatientDaoInterface {
     //TODO Read patient/show list of patients, or get patient by ID
     //Gets a current list of patients from datasource
     void getCurrentListPatients();
+
+    //Get patient object from datasource by id
+
+    Patient getPatientById(int Id);
 }
