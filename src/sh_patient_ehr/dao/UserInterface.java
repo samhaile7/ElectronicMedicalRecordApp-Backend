@@ -1,7 +1,10 @@
 package sh_patient_ehr.dao;
 
+import java.util.Scanner;
+
 public class UserInterface {
 
+    private Scanner userInput = new Scanner(System.in);
     public void displayWelcomePage() {
         System.out.println("***************************************");
         System.out.println("Welcome to Sam Haile Memorial Hospital Electronic Health Record System");
