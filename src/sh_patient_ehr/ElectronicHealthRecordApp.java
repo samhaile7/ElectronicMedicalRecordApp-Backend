@@ -1,8 +1,11 @@
 package sh_patient_ehr;
 
+import sh_patient_ehr.dao.UserInterface;
+
 public class ElectronicHealthRecordApp {
     public static void main(String[] args) {
         ElectronicHealthRecordApp electronicHealthRecordApp = new ElectronicHealthRecordApp();
+
         electronicHealthRecordApp.run();
 
 
@@ -22,6 +25,9 @@ public class ElectronicHealthRecordApp {
     }
 
     private void run(){
-        System.out.println("App is running");
+        UserInterface userInterface = new UserInterface();
+        userInterface.displayWelcomePage();
+        userInterface.displayChoices();
+
     }
 }
