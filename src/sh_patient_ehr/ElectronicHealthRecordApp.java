@@ -2,7 +2,8 @@ package sh_patient_ehr;
 
 public class ElectronicHealthRecordApp {
     public static void main(String[] args) {
-        System.out.println("App goes here");
+        ElectronicHealthRecordApp electronicHealthRecordApp = new ElectronicHealthRecordApp();
+        electronicHealthRecordApp.run();
 
 
         //Display Welcome! here is a list of patients: and their details
@@ -18,5 +19,9 @@ public class ElectronicHealthRecordApp {
             // print success! Patient created: you will find them on patient dashboard
         // 4 logger system with time functionality into a text file
 
+    }
+
+    private void run(){
+        System.out.println("App is running");
     }
 }
