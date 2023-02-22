@@ -35,4 +35,84 @@ public class Patient {
 
     // Add getters and setters once added all attributes (labs especially)
 
+
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public boolean isOnThrombolytics() {
+        return isOnThrombolytics;
+    }
+
+    public void setOnThrombolytics(boolean onThrombolytics) {
+        isOnThrombolytics = onThrombolytics;
+    }
+
+    public boolean isClearForMobility() {
+        return isClearForMobility;
+    }
+
+    public void setClearForMobility(boolean clearForMobility) {
+        isClearForMobility = clearForMobility;
+    }
+
+    public int getPartialThromboplastinTimePTT() {
+        return partialThromboplastinTimePTT;
+    }
+
+    public void setPartialThromboplastinTimePTT(int partialThromboplastinTimePTT) {
+        this.partialThromboplastinTimePTT = partialThromboplastinTimePTT;
+    }
+
+    public int getSystolicBloodPressureSP() {
+        return systolicBloodPressureSP;
+    }
+
+    public void setSystolicBloodPressureSP(int systolicBloodPressureSP) {
+        this.systolicBloodPressureSP = systolicBloodPressureSP;
+    }
+
+    public int getDiastolicBloodPressureDP() {
+        return diastolicBloodPressureDP;
+    }
+
+    public void setDiastolicBloodPressureDP(int diastolicBloodPressureDP) {
+        this.diastolicBloodPressureDP = diastolicBloodPressureDP;
+    }
+
+    public int getHeartRateHR() {
+        return heartRateHR;
+    }
+
+    public void setHeartRateHR(int heartRateHR) {
+        this.heartRateHR = heartRateHR;
+    }
 }
