@@ -1,6 +1,6 @@
 package sh_patient_ehr.dao;
 
-public interface PatientDAO {
+public interface PatientDaoInterface {
 
     //TODO Create/Add patient to datasource
 
