@@ -1,4 +1,4 @@
-package sh_patient_ehr.dao;
+package sh_patient_ehr;
 
 import java.util.Scanner;
 

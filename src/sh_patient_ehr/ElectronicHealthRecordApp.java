@@ -1,7 +1,5 @@
 package sh_patient_ehr;
 
-import sh_patient_ehr.dao.UserInterface;
-
 public class ElectronicHealthRecordApp {
     public static void main(String[] args) {
         ElectronicHealthRecordApp electronicHealthRecordApp = new ElectronicHealthRecordApp();
