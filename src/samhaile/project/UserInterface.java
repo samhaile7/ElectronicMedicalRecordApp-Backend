@@ -1,4 +1,4 @@
-package sh_patient_ehr;
+package samhaile.project;
 
 import java.util.Scanner;
 

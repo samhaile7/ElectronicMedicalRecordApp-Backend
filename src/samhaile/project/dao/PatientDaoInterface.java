@@ -1,6 +1,6 @@
-package sh_patient_ehr.dao;
+package samhaile.project.dao;
 
-import sh_patient_ehr.Patient;
+import samhaile.project.Patient;
 
 public interface PatientDaoInterface {
 

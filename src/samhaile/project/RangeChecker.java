@@ -1,4 +1,4 @@
-package sh_patient_ehr;
+package samhaile.project;
 
 public class RangeChecker {
 
