@@ -1,13 +1,14 @@
 # Electronic Medical Record App
 
 
-##HIPAA disclosure: ALL patient identifiers used in this app are fictional. 
+## HIPAA disclosure: 
+ALL patient identifiers used in this app are fictional. 
 App is used for technical demonstration purposes only 
 and is not to be used as medical or therapeutic data and/or advice. 
 
 Inspired by desired functionality of hospital EMR software while rehabilitating patients in the ICU as an occupational therapist. 
 
-###App Features
+### App Features
 
 
 - Calculates and displays if a hospital patient taking thrombolytics/blood thinners is safe to mobilize by healthcare professionals based on blood lab values. 
