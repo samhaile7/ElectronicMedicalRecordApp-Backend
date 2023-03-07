@@ -4,8 +4,14 @@ import org.apache.commons.dbcp2.BasicDataSource;
 
 public class ElectronicHealthRecordApp {
     public static void main(String[] args) {
-
+    // Create and configure new datasource and connection to database
         BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/patient");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("postgres1");
+
+
+
         ElectronicHealthRecordApp electronicHealthRecordApp = new ElectronicHealthRecordApp();
 
         electronicHealthRecordApp.run();
