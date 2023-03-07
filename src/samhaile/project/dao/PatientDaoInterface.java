@@ -23,5 +23,5 @@ public interface PatientDaoInterface {
 
     //Get patient object from datasource by id
 
-    Patient getPatientById(int Id);
+    Patient getPatientById(int patientID);
 }
