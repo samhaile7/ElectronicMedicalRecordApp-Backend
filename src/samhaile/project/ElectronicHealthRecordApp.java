@@ -1,7 +1,11 @@
 package samhaile.project;
 
+import org.apache.commons.dbcp2.BasicDataSource;
+
 public class ElectronicHealthRecordApp {
     public static void main(String[] args) {
+
+        BasicDataSource dataSource = new BasicDataSource();
         ElectronicHealthRecordApp electronicHealthRecordApp = new ElectronicHealthRecordApp();
 
         electronicHealthRecordApp.run();
