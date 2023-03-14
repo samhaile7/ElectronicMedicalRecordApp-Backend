@@ -17,6 +17,8 @@ Idea for this app inspired by missing functionality of hospital EMR software use
 
 - Allows healthcare providers to retrieve, remove, update, delete patient and lab data.
 
+Version 2.0: Will be a Spring Boot MVC application
+
 
 
 
