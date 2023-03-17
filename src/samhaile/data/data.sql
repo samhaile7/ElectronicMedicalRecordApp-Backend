@@ -1,4 +1,4 @@
---BEGIN TRANSACTION;
+
 DROP TABLE IF EXISTS labs;
 DROP TABLE IF EXISTS patient;
 
@@ -28,5 +28,4 @@ INSERT INTO patient (first_name, last_name, birth_date, admit_date) VALUES
 SELECT * from patient
 
 
---COMMIT;
 

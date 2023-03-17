@@ -1,4 +1,4 @@
-BEGIN TRANSACTION;
+--BEGIN TRANSACTION;
 DROP TABLE IF EXISTS patient;
 
 CREATE TABLE patient (
@@ -21,6 +21,8 @@ mobility_status boolean NOT NULL,
 	CONSTRAINT FK_labs_patient FOREIGN KEY (patient_id) REFERENCES patient(patient_id)
 );
 
+INSERT INTO patient (first_name, last_name, birth_date, admit_date) VALUES 
+('John', 'Doe', '1965-01-02', '2023-01-17');
 
 
 
