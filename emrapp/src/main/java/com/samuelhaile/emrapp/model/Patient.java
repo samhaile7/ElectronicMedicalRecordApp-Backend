@@ -1,4 +1,4 @@
-package samhaile.project;
+package com.samuelhaile.emrapp.model;
 
 public class Patient {
 

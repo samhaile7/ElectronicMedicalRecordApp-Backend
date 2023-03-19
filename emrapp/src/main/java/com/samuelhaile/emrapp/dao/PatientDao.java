@@ -1,4 +1,4 @@
-package samhaile.project.dao;
+package com.samuelhaile.emrapp.dao;
 
 import samhaile.project.Patient;
 import org.apache.commons.dbcp2.BasicDataSource;
