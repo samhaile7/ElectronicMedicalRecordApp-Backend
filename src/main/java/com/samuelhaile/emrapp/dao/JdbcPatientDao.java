@@ -1,7 +1,7 @@
 package com.samuelhaile.emrapp.dao;
 
-import samhaile.project.Patient;
-import org.apache.commons.dbcp2.BasicDataSource;
+import com.samuelhaile.emrapp.model.Patient;
+
 
 // This class creates and updates new patients in database.
 // method get Patient(patientid) that reads from database and returns patient object

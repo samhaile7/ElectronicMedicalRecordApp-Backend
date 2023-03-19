@@ -1,6 +1,6 @@
 package com.samuelhaile.emrapp.dao;
 
-import samhaile.project.Patient;
+import com.samuelhaile.emrapp.model.Patient;
 
 public interface PatientDao {
 
