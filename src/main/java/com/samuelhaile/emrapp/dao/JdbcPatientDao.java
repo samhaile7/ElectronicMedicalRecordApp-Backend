@@ -1,7 +1,11 @@
 package com.samuelhaile.emrapp.dao;
 
 import com.samuelhaile.emrapp.model.Patient;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -10,10 +14,33 @@ import java.util.List;
 // from sql row to customer object private method
 //insert method that inserts into databsae, returning patient id, then set that new id to patient object with returning
 
+
+@Component
 public class JdbcPatientDao implements PatientDao {
+
+    private JdbcTemplate jdbcTemplate;
+/*Only jdbc template instance that springs creates here. For all daos. Spring injects it into
+    constructor here. We flag it with @Component (tells spring this dependency is injected here and wired to other daos as well*/
+    public JdbcPatientDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+
     @Override
     public List<Patient> listAllPatients() {
-        return null;
+List<Patient> listOfPatients = new ArrayList<>();
+
+
+        String sql = "SELECT patient_id, first_name, last_name, birth_date, admit_date, mobility_status_id  " +
+               "FROM patient; ";
+
+        SqlRowSet rowSetResult = jdbcTemplate.queryForRowSet(sql);
+
+        while (rowSetResult.next()) {
+            listOfPatients.add(mapRowSetPatient(rowSetResult));
+
+        }
+        return listOfPatients;
     }
 
     @Override
@@ -36,22 +63,21 @@ public class JdbcPatientDao implements PatientDao {
 
     }
 
-    //Make constructor here that takes in a new datasource as a parameter
 
+    // Maps rowSet from sql to java Patient model object
 
-//    @Override
-//    public Patient getPatientById(int Id) {
-//        Patient patient = null;
-//
-//        String sql = "SELECT patient_id, first_name, last_name, birth_date, admit_date  " +
-//                "FROM patient " +
-//                "WHERE patient_id = ?;";
-//        //Add SQL ROW SET here
-//
-//
-//
-//        return patient;
-//    }
+    private Patient mapRowSetPatient(SqlRowSet row) {
+        Patient patient = new Patient();
+        patient.setPatientId(row.getInt("patient_id"));
+        patient.setFirstName(row.getString("first_name"));
+        patient.setLastName(row.getString("last_name"));
+        patient.setBirthDate(row.getDate("birth_date").toLocalDate());
+        patient.setAdmitDate(row.getDate("admit_date").toLocalDate());
+        patient.setMobilityStatusId(row.getInt("mobility_status_id"));
+
+        return patient;
+
+    }
 
 
 
