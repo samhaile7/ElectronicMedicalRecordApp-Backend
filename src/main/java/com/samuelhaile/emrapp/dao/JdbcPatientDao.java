@@ -51,6 +51,7 @@ List<Patient> listOfPatients = new ArrayList<>();
                 "FROM patient " +
                 "WHERE patient_id = ?; ";
 
+
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
 
         if (results.next()) {
