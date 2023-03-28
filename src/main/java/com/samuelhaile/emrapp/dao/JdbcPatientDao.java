@@ -60,13 +60,15 @@ List<Patient> listOfPatients = new ArrayList<>();
             return patient;
     }
 
+    //Adds new patient object to database, which returns autoincremented id. id is set to patient object. Patient object returned.
     @Override
-    public void createPatient(Patient patient) {
+    public Patient createPatient(Patient patient) {
 
         String sql = "INSERT INTO patient (first_name, last_name, birth_date, admit_date, mobility_status_id) " +
                 "VALUES (?, ?, ?, ?, ?) RETURNING id;";
         Integer patientId = jdbcTemplate.queryForObject(sql, Integer.class, patient.getFirstName(), patient.getLastName(), patient.getBirthDate(), patient.getAdmitDate(), patient.getMobilityStatusId());
         patient.setPatientId(patientId) ;
+        return patient;
     }
 
     @Override
