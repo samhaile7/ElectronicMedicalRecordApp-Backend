@@ -79,7 +79,10 @@ List<Patient> listOfPatients = new ArrayList<>();
 
     @Override
     public void updatePatient(Patient patient) {
+        String sql = "UPDATE patient SET first_name = ?, last_name = ?, birth_date = ?, admit_date = ?, mobility_status_id = ? " +
+                "WHERE patient_id = ?";
 
+        jdbcTemplate.update(sql, patient.getFirstName(), patient.getLastName(), patient.getBirthDate(), patient.getAdmitDate(),patient.getMobilityStatusId(), patient.getPatientId());
 
     }
 
