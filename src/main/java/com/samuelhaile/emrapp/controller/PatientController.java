@@ -51,11 +51,11 @@ public class PatientController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/patients/{id}", method = RequestMethod.DELETE)
-    public void deletePatient( @PathVariable int patientId) {
-        if (patientDao.getPatientById(patientId) == null) {
+    public void deletePatient( @PathVariable int id) {
+        if (patientDao.getPatientById(id) == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Patient Not Found");
         }
-         patientDao.deletePatient(patientId);
+         patientDao.deletePatient(id);
     }
 
 }
