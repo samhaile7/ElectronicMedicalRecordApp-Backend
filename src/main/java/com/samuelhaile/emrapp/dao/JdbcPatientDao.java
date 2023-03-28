@@ -72,12 +72,14 @@ List<Patient> listOfPatients = new ArrayList<>();
     }
 
     @Override
-    public void deletePatient(Patient patient) {
-
+    public void deletePatient(int patientId) {
+        String sql = "DELETE FROM patient WHERE id = ?";
+        jdbcTemplate.update(sql, patientId);
     }
 
     @Override
     public void updatePatient(Patient patient) {
+
 
     }
 
