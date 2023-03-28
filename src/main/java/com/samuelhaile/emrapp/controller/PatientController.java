@@ -3,6 +3,7 @@ package com.samuelhaile.emrapp.controller;
 import com.samuelhaile.emrapp.dao.JdbcPatientDao;
 import com.samuelhaile.emrapp.dao.PatientDao;
 import com.samuelhaile.emrapp.model.Patient;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -44,7 +45,7 @@ public class PatientController {
 
     @ResponseStatus (HttpStatus.CREATED)
     @RequestMapping(path = "/patients", method = RequestMethod.POST)
-    public Patient createPatient(@RequestBody Patient newPatient) {
+    public Patient createPatient(@RequestBody @Valid Patient newPatient) {
         return patientDao.createPatient(newPatient);
     }
 
