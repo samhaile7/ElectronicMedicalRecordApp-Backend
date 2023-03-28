@@ -36,7 +36,7 @@ public class PatientController {
     public Patient getPatientById(@PathVariable int id) {
         Patient patient = patientDao.getPatientById(id);
         if (patient == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Patient not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Patient Not Found");
         } else {
             return patient;
         }
@@ -49,5 +49,13 @@ public class PatientController {
         return patientDao.createPatient(newPatient);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/patients/{id}", method = RequestMethod.DELETE)
+    public void deletePatient( @PathVariable int patientId) {
+        if (patientDao.getPatientById(patientId) == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Patient Not Found");
+        }
+         patientDao.deletePatient(patientId);
+    }
 
 }
