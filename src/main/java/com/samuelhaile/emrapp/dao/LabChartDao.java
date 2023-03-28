@@ -1,7 +1,6 @@
 package com.samuelhaile.emrapp.dao;
 
 import com.samuelhaile.emrapp.model.LabChart;
-import com.samuelhaile.emrapp.model.Patient;
 
 import java.util.List;
 
@@ -10,7 +9,7 @@ public interface LabChartDao {
 
     List<LabChart> listAllLabCharts();
 
-    LabChart getlabChartByPatientId(int patientId);
+    LabChart getLabChartByPatientId(int patientId);
 
     LabChart createLabChart(LabChart labChart, int patientId);
 
