@@ -34,10 +34,10 @@ List<Patient> listOfPatients = new ArrayList<>();
         String sql = "SELECT patient_id, first_name, last_name, birth_date, admit_date, mobility_status_id  " +
                "FROM patient; ";
 
-        SqlRowSet rowSetResult = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
-        while (rowSetResult.next()) {
-            listOfPatients.add(mapRowSetPatient(rowSetResult));
+        while (results.next()) {
+            listOfPatients.add(mapRowToPatient(results));
 
         }
         return listOfPatients;
@@ -45,7 +45,20 @@ List<Patient> listOfPatients = new ArrayList<>();
 
     @Override
     public Patient getPatientById(int patientId) {
-        return null;
+
+        String sql = "SELECT patient_id, first_name, last_name, birth_date, admit_date, mobility_status_id  " +
+                "FROM patient" +
+                "WHERE patient_id = ?; ";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
+
+        if (results.next()) {
+            return mapRowToPatient(results);
+
+        } else {
+
+            return null;
+        }
     }
 
     @Override
@@ -66,7 +79,7 @@ List<Patient> listOfPatients = new ArrayList<>();
 
     // Maps rowSet from sql to java Patient model object
 
-    private Patient mapRowSetPatient(SqlRowSet row) {
+    private Patient mapRowToPatient(SqlRowSet row) {
         Patient patient = new Patient();
         patient.setPatientId(row.getInt("patient_id"));
         patient.setFirstName(row.getString("first_name"));
