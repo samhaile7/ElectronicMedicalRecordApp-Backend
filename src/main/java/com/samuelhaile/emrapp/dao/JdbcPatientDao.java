@@ -73,7 +73,7 @@ List<Patient> listOfPatients = new ArrayList<>();
 
     @Override
     public void deletePatient(int patientId) {
-        String sql = "DELETE FROM patient WHERE id = ?";
+        String sql = "DELETE FROM patient WHERE patient_id = ?";
         jdbcTemplate.update(sql, patientId);
     }
 
