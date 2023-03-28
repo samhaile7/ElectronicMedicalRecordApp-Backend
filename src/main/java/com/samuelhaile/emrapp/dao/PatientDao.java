@@ -11,7 +11,7 @@ public interface PatientDao {
     Patient getPatientById(int patientId);
      Patient createPatient(Patient patient);
 
-    void deletePatient(Patient patient);
+    void deletePatient(int patientId);
 
     void updatePatient(Patient patient);
 
