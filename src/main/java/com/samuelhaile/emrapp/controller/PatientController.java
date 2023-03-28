@@ -4,10 +4,7 @@ import com.samuelhaile.emrapp.dao.JdbcPatientDao;
 import com.samuelhaile.emrapp.dao.PatientDao;
 import com.samuelhaile.emrapp.model.Patient;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -43,4 +40,13 @@ public class PatientController {
             return patient;
         }
     }
+
+
+    @ResponseStatus (HttpStatus.CREATED)
+    @RequestMapping(path = "/patients", method = RequestMethod.POST)
+    public Patient createPatient(@RequestBody Patient newPatient) {
+        return patientDao.createPatient(newPatient);
+    }
+
+
 }
