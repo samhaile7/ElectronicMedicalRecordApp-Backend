@@ -45,20 +45,18 @@ List<Patient> listOfPatients = new ArrayList<>();
 
     @Override
     public Patient getPatientById(int patientId) {
+        Patient patient = null;
 
         String sql = "SELECT patient_id, first_name, last_name, birth_date, admit_date, mobility_status_id  " +
-                "FROM patient" +
+                "FROM patient " +
                 "WHERE patient_id = ?; ";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
 
         if (results.next()) {
-            return mapRowToPatient(results);
-
-        } else {
-
-            return null;
+            patient = mapRowToPatient(results);
         }
+            return patient;
     }
 
     @Override
