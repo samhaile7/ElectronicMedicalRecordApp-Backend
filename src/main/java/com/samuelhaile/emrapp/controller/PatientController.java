@@ -58,4 +58,13 @@ public class PatientController {
          patientDao.deletePatient(id);
     }
 
+
+    @RequestMapping(path = "/patients", method = RequestMethod.PUT)
+    public void updatePatient( @RequestBody @Valid  Patient patientToUpdate) {
+        if (patientDao.getPatientById(patientToUpdate.getPatientId()) == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Patient Not Found");
+        }
+        patientDao.updatePatient(patientToUpdate);
+    }
+
 }
