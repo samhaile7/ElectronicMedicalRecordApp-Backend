@@ -1,5 +1,8 @@
 package com.samuelhaile.emrapp.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 
 public class Patient {
@@ -7,9 +10,13 @@ public class Patient {
     //Attributes
 
     private int patientId;
+    @NotBlank (message = "First name required")
     private String firstName;
+    @NotBlank (message = "Last name required")
     private String lastName;
+    @NotNull (message = "Birth date required")
     private LocalDate birthDate;
+    @NotNull (message = "Admit date required")
     private LocalDate admitDate;
     private int mobilityStatusId;
 
