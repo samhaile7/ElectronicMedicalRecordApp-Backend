@@ -65,7 +65,7 @@ List<Patient> listOfPatients = new ArrayList<>();
     public Patient createPatient(Patient patient) {
 
         String sql = "INSERT INTO patient (first_name, last_name, birth_date, admit_date, mobility_status_id) " +
-                "VALUES (?, ?, ?, ?, ?) RETURNING id;";
+                "VALUES (?, ?, ?, ?, ?) RETURNING patient_id;";
         Integer patientId = jdbcTemplate.queryForObject(sql, Integer.class, patient.getFirstName(), patient.getLastName(), patient.getBirthDate(), patient.getAdmitDate(), patient.getMobilityStatusId());
         patient.setPatientId(patientId) ;
         return patient;
