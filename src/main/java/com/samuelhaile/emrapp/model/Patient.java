@@ -18,12 +18,19 @@ public class Patient {
     private LocalDate birthDate;
     @NotNull (message = "Admit date required")
     private LocalDate admitDate;
+    @NotNull (message = "Pulse rate required")
     private int pulseRate;
+    @NotNull (message = "Respiration rate required")
     private int respirationRate;
+    @NotNull (message = "Temperature required")
     private int temperature;
+    @NotNull (message = "SpO2 required")
     private int sPO2;
+    @NotNull (message = "PTT required")
     private int partialThromboplastinTime;
+    @NotNull (message = "Systolic Pressure required")
     private int systolicBloodPressure;
+    @NotNull (message = "Diastolic Pressure required")
     private int diastolicBloodPressure;
 
     private int mobilityStatusId;
