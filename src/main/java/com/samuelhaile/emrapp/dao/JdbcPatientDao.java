@@ -79,10 +79,14 @@ List<Patient> listOfPatients = new ArrayList<>();
 
     @Override
     public void updatePatient(Patient patient) {
-        String sql = "UPDATE patient SET first_name = ?, last_name = ?, birth_date = ?, admit_date = ?, mobility_status_id = ? " +
+        String sql = "UPDATE patient SET first_name = ?, last_name = ?, birth_date = ?, admit_date = ?, pulse_rate = ?, respiration_rate = ?, systolic_bp = ?, diastolic_bp = ?, sp_O2 = ?, temperature = ?, partial_thromboplastin_time = ?, mobility_status_id = ? " +
                 "WHERE patient_id = ?";
 
-        jdbcTemplate.update(sql, patient.getFirstName(), patient.getLastName(), patient.getBirthDate(), patient.getAdmitDate(),patient.getMobilityStatusId(), patient.getPatientId());
+        jdbcTemplate.update(sql, patient.getFirstName(), patient.getLastName(), patient.getBirthDate(), patient.getAdmitDate(),
+                patient.getPulseRate(),patient.getRespirationRate(),
+                patient.getSystolicBloodPressure(), patient.getDiastolicBloodPressure(),
+                patient.getsPO2(), patient.getTemperature(),patient.getPartialThromboplastinTime(),
+                patient.getMobilityStatusId(), patient.getPatientId());
 
     }
 
@@ -96,6 +100,9 @@ List<Patient> listOfPatients = new ArrayList<>();
         patient.setLastName(row.getString("last_name"));
         patient.setBirthDate(row.getDate("birth_date").toLocalDate());
         patient.setAdmitDate(row.getDate("admit_date").toLocalDate());
+
+
+
         patient.setMobilityStatusId(row.getInt("mobility_status_id"));
 
         return patient;
