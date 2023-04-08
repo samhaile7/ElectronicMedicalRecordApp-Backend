@@ -1,8 +1,8 @@
 package com.samuelhaile.emrapp.controller;
 
-import com.samuelhaile.emrapp.dao.JdbcPatientDao;
 import com.samuelhaile.emrapp.dao.PatientDao;
 import com.samuelhaile.emrapp.model.Patient;
+import com.samuelhaile.emrapp.model.RangeCheckerService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +15,7 @@ import java.util.List;
 public class PatientController {
 
     private PatientDao patientDao;
+    private RangeCheckerService rangeCheckerService = new RangeCheckerService();
 
     public PatientController(PatientDao patientDao) {
         this.patientDao = patientDao;
@@ -46,7 +47,8 @@ public class PatientController {
     @ResponseStatus (HttpStatus.CREATED)
     @RequestMapping(path = "/patients", method = RequestMethod.POST)
     public Patient createPatient(@RequestBody @Valid Patient newPatient) {
-        return patientDao.createPatient(newPatient);
+        Patient patientWithUpdatedMobilityStatus = rangeCheckerService.setPatientMobilityStatus(newPatient);
+        return patientDao.createPatient(patientWithUpdatedMobilityStatus);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -64,7 +66,8 @@ public class PatientController {
         if (patientDao.getPatientById(patientToUpdate.getPatientId()) == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Patient Not Found");
         }
-        patientDao.updatePatient(patientToUpdate);
+        Patient patientWithUpdatedMobilityStatus = rangeCheckerService.setPatientMobilityStatus(patientToUpdate);
+        patientDao.updatePatient(patientWithUpdatedMobilityStatus);
     }
 
 }
