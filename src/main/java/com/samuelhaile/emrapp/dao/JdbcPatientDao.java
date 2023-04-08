@@ -47,9 +47,12 @@ List<Patient> listOfPatients = new ArrayList<>();
     public Patient getPatientById(int patientId) {
         Patient patient = null;
 
-        String sql = "SELECT patient_id, first_name, last_name, birth_date, admit_date, mobility_status_id  " +
-                "FROM patient " +
-                "WHERE patient_id = ?; ";
+        String sql =
+                "SELECT patient_id, first_name, last_name, birth_date, admit_date, pulse_rate, " +
+                "                respiration_rate, systolic_bp, diastolic_bp, sp_O2, temperature,   " +
+                "                partial_thromboplastin_time, mobility_status_id   " +
+                "                FROM patient   " +
+                "                WHERE patient_id = ?; ";
 
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
