@@ -3,20 +3,19 @@ package com.samuelhaile.emrapp.model;
 public class RangeChecker {
 
     // Add min and max lab values here, final constants
-    final double MIN_SYSTOLIC_PRESSURE = 0;
-    final double MAX_SYSTOLIC_PRESSURE = 0;
-    final double MIN_DIASTOLIC_PRESSURE = 0;
-    final double MAX_DIASTOLIC_PRESSURE = 0;
-    final double MIN_PARTIAL_THROMBOPLASTIN_TIME = 0;
-    final double MAX_PARTIAL_THROMBOPLASTIN_TIME = 0;
-    final double MIN_PULSE = 0;
-    final double MAX_PULSE = 0;
-    final double MIN_RESPIRATION_RATE = 0;
-    final double MAX_RESPIRATION_RATE = 0;
-    final double MIN_TEMPERATURE = 0;
-    final double MAX_TEMPERATURE = 0;
-    final double MIN_OXYGEN_SPO2 = 0;
-    final double MAX_OXYGEN_SPO2 = 0;
+    final double MIN_SYSTOLIC_PRESSURE = 90;
+    final double MAX_SYSTOLIC_PRESSURE = 159;
+    final double MIN_DIASTOLIC_PRESSURE = 60;
+    final double MAX_DIASTOLIC_PRESSURE = 99;
+    final double MIN_PARTIAL_THROMBOPLASTIN_TIME = 11;
+    final double MAX_PARTIAL_THROMBOPLASTIN_TIME = 22;
+    final double MIN_PULSE = 40;
+    final double MAX_PULSE = 140;
+    final double MIN_RESPIRATION_RATE = 10;
+    final double MAX_RESPIRATION_RATE = 24;
+    final double MIN_TEMPERATURE = 95;
+    final double MAX_TEMPERATURE = 99.5;
+    final double MIN_OXYGEN_SPO2 = 90;
 
 
     //update mobility status method(patient) with patient as a parameter
@@ -54,7 +53,7 @@ public class RangeChecker {
         if (patient.getTemperature() > MAX_TEMPERATURE || patient.getTemperature() < MIN_TEMPERATURE){
             output = false;
         };
-        if (patient.getsPO2() > MAX_OXYGEN_SPO2 || patient.getsPO2() < MIN_OXYGEN_SPO2){
+        if (patient.getsPO2() < MIN_OXYGEN_SPO2){
             output = false;
         };
 
