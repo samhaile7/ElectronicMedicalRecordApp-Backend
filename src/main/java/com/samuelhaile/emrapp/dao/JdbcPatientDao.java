@@ -79,10 +79,13 @@ List<Patient> listOfPatients = new ArrayList<>();
 
     @Override
     public void updatePatient(Patient patient) {
-        String sql = "UPDATE patient SET first_name = ?, last_name = ?, birth_date = ?, admit_date = ?, pulse_rate = ?, respiration_rate = ?, systolic_bp = ?, diastolic_bp = ?, sp_O2 = ?, temperature = ?, partial_thromboplastin_time = ?, mobility_status_id = ? " +
+        String sql = "UPDATE patient SET first_name = ?, last_name = ?, birth_date = ?, admit_date = ?, pulse_rate = ?, " +
+                "respiration_rate = ?, systolic_bp = ?, diastolic_bp = ?, sp_O2 = ?, temperature = ?, " +
+                "partial_thromboplastin_time = ?, mobility_status_id = ? " +
                 "WHERE patient_id = ?";
 
-        jdbcTemplate.update(sql, patient.getFirstName(), patient.getLastName(), patient.getBirthDate(), patient.getAdmitDate(),
+        jdbcTemplate.update(sql, patient.getFirstName(), patient.getLastName(),
+                patient.getBirthDate(), patient.getAdmitDate(),
                 patient.getPulseRate(),patient.getRespirationRate(),
                 patient.getSystolicBloodPressure(), patient.getDiastolicBloodPressure(),
                 patient.getsPO2(), patient.getTemperature(),patient.getPartialThromboplastinTime(),
@@ -100,9 +103,13 @@ List<Patient> listOfPatients = new ArrayList<>();
         patient.setLastName(row.getString("last_name"));
         patient.setBirthDate(row.getDate("birth_date").toLocalDate());
         patient.setAdmitDate(row.getDate("admit_date").toLocalDate());
-
-
-
+        patient.setPulseRate(row.getInt("pulse_rate"));
+        patient.setRespirationRate(row.getInt("respiration_rate"));
+        patient.setSystolicBloodPressure(row.getInt("systolic_bp"));
+        patient.setDiastolicBloodPressure(row.getInt("diastolic_bp"));
+        patient.setsPO2(row.getInt("sp_O2"));
+        patient.setTemperature(row.getInt("temperature"));
+        patient.setPartialThromboplastinTime(row.getInt("partial_thromboplastin_time"));
         patient.setMobilityStatusId(row.getInt("mobility_status_id"));
 
         return patient;
