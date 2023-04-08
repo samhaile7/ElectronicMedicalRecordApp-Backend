@@ -1,6 +1,7 @@
 package com.samuelhaile.emrapp.model;
 
-public class RangeChecker {
+
+public class RangeCheckerService {
 
     // Add min and max lab values here, final constants
     final double MIN_SYSTOLIC_PRESSURE = 90;
