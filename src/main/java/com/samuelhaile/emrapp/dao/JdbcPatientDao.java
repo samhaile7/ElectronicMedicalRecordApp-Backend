@@ -64,9 +64,16 @@ List<Patient> listOfPatients = new ArrayList<>();
     @Override
     public Patient createPatient(Patient patient) {
 
-        String sql = "INSERT INTO patient (first_name, last_name, birth_date, admit_date, mobility_status_id) " +
-                "VALUES (?, ?, ?, ?, ?) RETURNING patient_id;";
-        Integer patientId = jdbcTemplate.queryForObject(sql, Integer.class, patient.getFirstName(), patient.getLastName(), patient.getBirthDate(), patient.getAdmitDate(), patient.getMobilityStatusId());
+        String sql = "INSERT INTO patient (first_name, last_name, birth_date, admit_date, pulse_rate, " +
+                "respiration_rate, systolic_bp, diastolic_bp, sp_O2, temperature, " +
+                "partial_thromboplastin_time, mobility_status_id) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING patient_id;";
+        Integer patientId = jdbcTemplate.queryForObject(sql, Integer.class, patient.getFirstName(), patient.getLastName(),
+                patient.getBirthDate(), patient.getAdmitDate(),
+                patient.getPulseRate(),patient.getRespirationRate(),
+                patient.getSystolicBloodPressure(), patient.getDiastolicBloodPressure(),
+                patient.getsPO2(), patient.getTemperature(),patient.getPartialThromboplastinTime(),
+                patient.getMobilityStatusId());
         patient.setPatientId(patientId) ;
         return patient;
     }
