@@ -1,7 +1,6 @@
 package com.samuelhaile.emrapp.dao;
 
 import com.samuelhaile.emrapp.model.Note;
-import com.samuelhaile.emrapp.model.Patient;
 
 import java.util.List;
 
@@ -15,5 +14,5 @@ public interface NoteDao {
 
     void deleteNote(int noteId);
 
-    void update(Note note);
+    void updateNote(Note note);
 }
