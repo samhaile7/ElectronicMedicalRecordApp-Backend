@@ -51,6 +51,17 @@ public class JdbcNoteDao implements NoteDao {
 
     @Override
     public Note createNote(Note note) {
+            String sql = "INSERT INTO patient_note (patient_id, note_details, date_added) " +
+                    "VALUES (?, ?, ?) RETURNING note_id;";
+            Integer noteId = jdbcTemplate.queryForObject(sql, Integer.class, note.getPatientId(), note.getNoteDetails(),
+                    note.getDateNoteAdded());
+            note.setNoteId(noteId);
+            return note;
+        }
+
+
+
+
         return null;
     }
 
