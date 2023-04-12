@@ -23,7 +23,7 @@ public class RangeCheckerService {
     // compares current patient lab values(getter from Patient class
     // to constant ranges, set mobility status
 
-    public Patient setPatientMobilityStatus(Patient patient) {
+    public Patient assignPatientMobilityStatus(Patient patient) {
         if (valuesWithinRange(patient)) {
             patient.setMobilityStatusId(1);
         }

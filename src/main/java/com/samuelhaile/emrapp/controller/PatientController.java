@@ -47,7 +47,7 @@ public class PatientController {
     @ResponseStatus (HttpStatus.CREATED)
     @RequestMapping(path = "/patients", method = RequestMethod.POST)
     public Patient createPatient(@RequestBody @Valid Patient newPatient) {
-        Patient patientWithUpdatedMobilityStatus = rangeCheckerService.setPatientMobilityStatus(newPatient);
+        Patient patientWithUpdatedMobilityStatus = rangeCheckerService.assignPatientMobilityStatus(newPatient);
         return patientDao.createPatient(patientWithUpdatedMobilityStatus);
     }
 
@@ -66,7 +66,7 @@ public class PatientController {
         if (patientDao.getPatientById(patientToUpdate.getPatientId()) == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Patient Not Found");
         }
-        Patient patientWithUpdatedMobilityStatus = rangeCheckerService.setPatientMobilityStatus(patientToUpdate);
+        Patient patientWithUpdatedMobilityStatus = rangeCheckerService.assignPatientMobilityStatus(patientToUpdate);
         patientDao.updatePatient(patientWithUpdatedMobilityStatus);
     }
 
