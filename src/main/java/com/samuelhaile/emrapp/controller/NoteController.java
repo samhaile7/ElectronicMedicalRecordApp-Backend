@@ -26,9 +26,19 @@ public class NoteController {
     public Note getNoteByNoteId(@PathVariable int noteId) {
         Note note = noteDao.getNoteByNoteId(noteId);
         if (note == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Patient Not Found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Note Not Found");
         } else {
             return note;
+        }
+    }
+
+    @RequestMapping(path = "/notes/patient/{patientId}", method = RequestMethod.GET)
+    public List<Note> getNotesByPatientId(@PathVariable int patientId) {
+        List<Note> allNotes = noteDao.listAllNotesByPatientId(patientId);
+        if (allNotes == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Notes Found");
+        } else {
+            return allNotes;
         }
     }
 
