@@ -59,20 +59,24 @@ public class JdbcNoteDao implements NoteDao {
             return note;
         }
 
-
-
-
-
-
     @Override
     public void deleteNote(int noteId) {
-
+        String sql = "DELETE FROM patient_note WHERE note_id = ?";
+        jdbcTemplate.update(sql, noteId);
     }
+
+
 
     @Override
-    public void update(Note note) {
+    public void updateNote(Note note) {
 
-    }
+            String sql = "UPDATE patient_note SET patient_id = ?, note_details = ?, date_added = ? " +
+                    "WHERE note_id = ?;";
+
+            jdbcTemplate.update(sql, note.getPatientId(), note.getNoteDetails(), note.getDateNoteAdded(), note.getNoteId());
+
+        }
+
 
     private Note mapRowToNote(SqlRowSet row) {
         Note note = new Note();
