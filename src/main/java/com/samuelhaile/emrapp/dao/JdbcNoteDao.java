@@ -62,8 +62,7 @@ public class JdbcNoteDao implements NoteDao {
 
 
 
-        return null;
-    }
+
 
     @Override
     public void deleteNote(int noteId) {
