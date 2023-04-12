@@ -41,7 +41,7 @@ INSERT INTO patient (first_name, last_name, birth_date, admit_date, pulse_rate, 
 VALUES ('John', 'Doe', '1994-01-01', '2023-01-01', 54, 50, 120, 80, 99, 97, 1, 1);
 
 INSERT INTO patient (first_name, last_name, birth_date, admit_date,pulse_rate, respiration_rate, systolic_bp, diastolic_bp, sp_O2, temperature, partial_thromboplastin_time, mobility_status_id)
-VALUES ('Jane', 'Smith', '1978-01-01', '2022-04-04', 60, 50, 165, 90, 99, 97, 1, 2 );
+VALUES ('Jane', 'Smith', '1978-01-01', '2022-04-04', 60, 50, 165, 99, 99, 97, 1, 2 );
 
 INSERT INTO patient_note (patient_id , note_details , date_added )
 VALUES (1, 'This is a note', '2023-03-14');
