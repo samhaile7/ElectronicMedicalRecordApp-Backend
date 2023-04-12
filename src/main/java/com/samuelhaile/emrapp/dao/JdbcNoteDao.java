@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,9 +21,18 @@ public class JdbcNoteDao implements NoteDao {
 
     @Override
     public List<Note> listAllNotesByPatientId(int patientId) {
+            List<Note> allNotesForPatient = new ArrayList<>();
+            String sql =
+                    "SELECT note_id, patient_id, note_details, date_added  " +
+                            "                        FROM patient_note " +
+                            "                        WHERE patient_id = ?; ";
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
 
-        return null;
-    }
+            while (results.next()) {
+                allNotesForPatient.add(mapRowToNote(results));
+            }
+            return allNotesForPatient;
+        }
 
     @Override
     public Note getNoteByNoteId(int noteId) {
