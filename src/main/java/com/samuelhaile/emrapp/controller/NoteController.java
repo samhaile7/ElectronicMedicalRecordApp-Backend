@@ -4,11 +4,9 @@ package com.samuelhaile.emrapp.controller;
 import com.samuelhaile.emrapp.dao.NoteDao;
 import com.samuelhaile.emrapp.model.Note;
 import com.samuelhaile.emrapp.model.Patient;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -40,6 +38,12 @@ public class NoteController {
         } else {
             return allNotes;
         }
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/notes", method = RequestMethod.POST)
+    public Note createNote(@RequestBody @Valid Note newNote) {
+        return noteDao.createNote(newNote);
     }
 
 }
