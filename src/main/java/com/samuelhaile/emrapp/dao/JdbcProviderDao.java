@@ -11,6 +11,11 @@ import java.util.List;
 public class JdbcProviderDao implements ProviderDao {
 
     private JdbcTemplate jdbcTemplate;
+    private JdbcPatientDao patientDao;
+
+    public JdbcProviderDao(JdbcPatientDao patientDao) {
+        this.patientDao = patientDao;
+    }
 
     @Override
     public List<Provider> listAllProviders() {
@@ -78,9 +83,26 @@ public class JdbcProviderDao implements ProviderDao {
     }
 
     @Override
-    public List<Patient> listAllPatientsUnderProvider() {
-        return null;
-    }
+    public List<Patient> listAllPatientsUnderProvider(int providerId) {
+
+            List<Patient> listOfPatientsUnderProvider = new ArrayList<>();
+
+
+            String sql = "SELECT patient_id, first_name, last_name, birth_date, admit_date, pulse_rate, " +
+                    "  respiration_rate, systolic_bp, diastolic_bp, sp_O2, temperature, " +
+                    " partial_thromboplastin_time, mobility_status_id  " +
+                    "FROM patient" +
+                    "JOIN patient_provider " +
+                    "ON patient.patient_id = patient_provider.patient_id" +
+                    "WHERE patient_provider.provider_id = ?; ";
+
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, providerId);
+
+            while (results.next()) {
+                listOfPatientsUnderProvider.add(patientDao.mapRowToPatient(results));
+            }
+            return listOfPatientsUnderProvider;
+        }
 
 
 
