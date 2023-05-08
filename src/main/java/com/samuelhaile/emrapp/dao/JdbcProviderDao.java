@@ -4,10 +4,12 @@ import com.samuelhaile.emrapp.model.Patient;
 import com.samuelhaile.emrapp.model.Provider;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcProviderDao implements ProviderDao {
 
     private JdbcTemplate jdbcTemplate;
