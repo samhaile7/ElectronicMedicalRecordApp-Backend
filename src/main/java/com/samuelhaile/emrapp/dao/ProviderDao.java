@@ -13,7 +13,7 @@ public interface ProviderDao {
     Provider createProvider(Provider provider);
     void deleteProvider(int providerId);
     void updateProvider(Provider provider);
-    List<Patient> listAllPatientsUnderProvider();
+    List<Patient> listAllPatientsUnderProvider(int providerId);
 
 
 
