@@ -24,7 +24,6 @@ public class JdbcProviderDao implements ProviderDao {
 
         while (results.next()) {
             listOfProviders.add(mapRowToProvider(results));
-
         }
         return listOfProviders;
 
@@ -51,8 +50,17 @@ public class JdbcProviderDao implements ProviderDao {
 
     @Override
     public Provider createProvider(Provider provider) {
-        return null;
+
+
+        String sql = "INSERT INTO provider (first_name, last_name, job_title " +
+
+                "VALUES (?, ?, ?) RETURNING provider_id;";
+        Integer providerId = jdbcTemplate.queryForObject(sql, Integer.class, provider.getFirstName(), provider.getLastName(),
+                provider.getJobTitle());
+        provider.setProviderId(providerId); ;
+        return provider;
     }
+
 
     @Override
     public void deleteProvider(int providerId) {
