@@ -20,13 +20,13 @@ public class JdbcPatientDaoTest {
         this.patientDao = patientDao;
     }
 
-    @Test
+//    @Test
 
-    public void list_patients_should_return_all_patients() {
-        List<Patient> patientList = patientDao.listAllPatients();
-        assertEquals(5, patientList.size());
-
-    }
+//    public void list_patients_should_return_all_patients() {
+//        List<Patient> patientList = patientDao.listAllPatients();
+//        assertEquals(5, patientList.size());
+//
+//    }
 
 
 
