@@ -43,6 +43,13 @@ CONSTRAINT PK_patient_note PRIMARY KEY (note_id),
 CONSTRAINT FK_patient_note_patient FOREIGN KEY (patient_id) REFERENCES patient (patient_id));
 
 
+CREATE TABLE provider (
+provider_id serial,
+first_name varchar(50)NOT NULL,
+last_name varchar(50) NOT NULL, 
+job_title varchar(50) NOT NULL, 
+
+
 
 INSERT INTO mobility_status (mobility_status_description) VALUES ('Clear');
 INSERT INTO mobility_status (mobility_status_description) VALUES ('Not Clear');
