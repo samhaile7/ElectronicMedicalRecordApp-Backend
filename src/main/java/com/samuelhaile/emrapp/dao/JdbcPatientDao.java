@@ -108,7 +108,7 @@ List<Patient> listOfPatients = new ArrayList<>();
 
     // Maps rowSet from sql to java Patient model object
 
-    private Patient mapRowToPatient(SqlRowSet row) {
+    public Patient mapRowToPatient(SqlRowSet row) {
         Patient patient = new Patient();
         patient.setPatientId(row.getInt("patient_id"));
         patient.setFirstName(row.getString("first_name"));
