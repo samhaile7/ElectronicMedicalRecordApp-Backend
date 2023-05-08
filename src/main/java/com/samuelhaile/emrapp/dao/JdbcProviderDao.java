@@ -61,15 +61,20 @@ public class JdbcProviderDao implements ProviderDao {
         return provider;
     }
 
-
     @Override
     public void deleteProvider(int providerId) {
-
+        String sql = "DELETE FROM provider WHERE provider_id = ?";
+        jdbcTemplate.update(sql, providerId);
     }
 
     @Override
     public void updateProvider(Provider provider) {
 
+        String sql = "UPDATE provider SET first_name = ?, last_name = ?, job_title = ? " +
+                "WHERE provider_id = ?";
+
+        jdbcTemplate.update(sql, provider.getFirstName(), provider.getLastName(),
+                provider.getJobTitle());
     }
 
     @Override
