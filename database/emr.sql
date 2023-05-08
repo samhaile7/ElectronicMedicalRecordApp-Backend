@@ -16,8 +16,8 @@ CONSTRAINT PK_mobility_status PRIMARY KEY (mobility_status_id));
 
 CREATE TABLE patient (
 patient_id serial,
-first_name varchar(50)NOT NULL,
-last_name varchar(50) NOT NULL, 
+first_name varchar(100)NOT NULL,
+last_name varchar(100) NOT NULL, 
 birth_date date NOT NULL,
 admit_date date NOT NULL,
 pulse_rate int NOT NULL,
@@ -45,9 +45,9 @@ CONSTRAINT FK_patient_note_patient FOREIGN KEY (patient_id) REFERENCES patient (
 
 CREATE TABLE provider (
 provider_id serial,
-first_name varchar(50)NOT NULL,
-last_name varchar(50) NOT NULL, 
-job_title varchar(50) NOT NULL, 
+first_name varchar(100)NOT NULL,
+last_name varchar(100) NOT NULL, 
+job_title varchar(100) NOT NULL, 
 
 
 
