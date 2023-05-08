@@ -1,4 +1,6 @@
 DROP TABLE IF EXISTS mobility_status CASCADE;
+DROP TABLE IF EXISTS patient_provider CASCADE;
+DROP TABLE IF EXISTS provider CASCADE;
 DROP TABLE IF EXISTS patient CASCADE;
 DROP TABLE IF EXISTS patient_note CASCADE;
 
@@ -47,9 +49,19 @@ CREATE TABLE provider (
 provider_id serial,
 first_name varchar(100)NOT NULL,
 last_name varchar(100) NOT NULL, 
-job_title varchar(100) NOT NULL, 
+job_title varchar(100) NOT NULL,
+	
+	CONSTRAINT PK_provider PRIMARY KEY (provider_id)
+	);
 
-
+CREATE TABLE patient_provider(
+	patient_provider_id serial NOT NULL,
+	patient_id int NOT NULL,
+	provider_id int NOT NULL,
+	CONSTRAINT PK_patient_provider PRIMARY KEY (patient_provider_id),
+	CONSTRAINT FK_patient_provider_patient FOREIGN KEY(patient_id) REFERENCES patient (patient_id),
+	CONSTRAINT FK_patient_provider_provider FOREIGN KEY(provider_id) REFERENCES provider (provider_id));
+	
 
 INSERT INTO mobility_status (mobility_status_description) VALUES ('Clear');
 INSERT INTO mobility_status (mobility_status_description) VALUES ('Not Clear');
