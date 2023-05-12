@@ -11,7 +11,7 @@ public interface ProviderDao {
     List<Provider> listAllProviders();
     Provider getProviderById(int providerId);
 
-    String getProviderRole(Provider provider);
+    String getProviderRole(int provider);
     Provider createProvider(Provider provider);
     void deleteProvider(int providerId);
     void updateProvider(Provider provider);

@@ -56,13 +56,13 @@ public class JdbcProviderDao implements ProviderDao {
     }
 
     @Override
-    public String getProviderRole(Provider provider) {
+    public String getProviderRole(int providerId) {
         String sql =
                 "SELECT job_title_name " +
                         "                FROM provider   " +
                         "                JOIN job_title ON provider.job_title_id = job_title.job_title_id   " +
                         "                WHERE provider_id = ?; ";
-        String roleString = jdbcTemplate.queryForObject(sql, String.class, provider.getProviderId());
+        String roleString = jdbcTemplate.queryForObject(sql, String.class, providerId);
 
         return roleString;
     }

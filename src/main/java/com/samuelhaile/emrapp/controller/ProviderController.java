@@ -25,6 +25,11 @@ public class ProviderController {
         return providerDao.listAllPatientsUnderProvider(providerId);
     }
 
+    @RequestMapping(path = "/providers/{providerId}/role", method = RequestMethod.GET)
+    public String getProviderRoleByProviderId(@PathVariable int providerId) {
+        return providerDao.getProviderRole(providerId);
+    }
+
     @RequestMapping(path = "/providers", method = RequestMethod.GET)
     public List<Provider> listAllProviders() {
         return providerDao.listAllProviders();
