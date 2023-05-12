@@ -73,7 +73,7 @@ public class JdbcProviderDao implements ProviderDao {
     public Provider createProvider(Provider provider) {
 
 
-        String sql = "INSERT INTO provider (first_name, last_name, job_title_id " +
+        String sql = "INSERT INTO provider (first_name, last_name, job_title_id) " +
 
                 "VALUES (?, ?, ?) RETURNING provider_id;";
         Integer providerId = jdbcTemplate.queryForObject(sql, Integer.class, provider.getFirstName(), provider.getLastName(),
