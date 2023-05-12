@@ -99,6 +99,19 @@ public class JdbcProviderDao implements ProviderDao {
     }
 
     @Override
+    public void pickUpPatient(int patientId, int providerId) {
+
+
+        String sql = "INSERT INTO patient_provider (patient_id, provider_id) " +
+
+                "VALUES (?, ?) RETURNING patient_provider_id;";
+        Integer patientProviderId = jdbcTemplate.queryForObject(sql, Integer.class, patientId, providerId);
+
+
+
+    }
+
+    @Override
     public List<Patient> listAllPatientsUnderProvider(int providerId) {
 
             List<Patient> listOfPatientsUnderProvider = new ArrayList<>();
