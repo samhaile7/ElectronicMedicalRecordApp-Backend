@@ -91,11 +91,12 @@ public class JdbcProviderDao implements ProviderDao {
     @Override
     public void updateProvider(Provider provider) {
 
-        String sql = "UPDATE provider SET first_name = ?, last_name = ?, job_title_id = ? " +
-                "WHERE provider_id = ?";
+        String sql = "UPDATE provider SET first_name = ? , last_name = ? , job_title_id = ?  " +
+                "                WHERE provider_id = ?";
+
 
         jdbcTemplate.update(sql, provider.getFirstName(), provider.getLastName(),
-                provider.getJobTitleId());
+                provider.getJobTitleId(), provider.getProviderId());
     }
 
     @Override
