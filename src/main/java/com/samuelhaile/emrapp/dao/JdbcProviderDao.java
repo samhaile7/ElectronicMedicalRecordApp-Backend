@@ -24,7 +24,7 @@ public class JdbcProviderDao implements ProviderDao {
         List<Provider> listOfProviders = new ArrayList<>();
 
 
-        String sql = "SELECT provider_id, first_name, last_name, job_title " +
+        String sql = "SELECT provider_id, first_name, last_name, job_title_id " +
                 "FROM provider; ";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -42,7 +42,7 @@ public class JdbcProviderDao implements ProviderDao {
         Provider provider = null;
 
         String sql =
-                "SELECT provider_id, first_name, last_name, job_title " +
+                "SELECT provider_id, first_name, last_name, job_title_id " +
                         "                FROM provider   " +
                         "                WHERE provider_id = ?; ";
 
@@ -59,11 +59,11 @@ public class JdbcProviderDao implements ProviderDao {
     public Provider createProvider(Provider provider) {
 
 
-        String sql = "INSERT INTO provider (first_name, last_name, job_title " +
+        String sql = "INSERT INTO provider (first_name, last_name, job_title_id " +
 
                 "VALUES (?, ?, ?) RETURNING provider_id;";
         Integer providerId = jdbcTemplate.queryForObject(sql, Integer.class, provider.getFirstName(), provider.getLastName(),
-                provider.getJobTitle());
+                provider.getJobTitleId());
         provider.setProviderId(providerId); ;
         return provider;
     }
@@ -77,11 +77,11 @@ public class JdbcProviderDao implements ProviderDao {
     @Override
     public void updateProvider(Provider provider) {
 
-        String sql = "UPDATE provider SET first_name = ?, last_name = ?, job_title = ? " +
+        String sql = "UPDATE provider SET first_name = ?, last_name = ?, job_title_id = ? " +
                 "WHERE provider_id = ?";
 
         jdbcTemplate.update(sql, provider.getFirstName(), provider.getLastName(),
-                provider.getJobTitle());
+                provider.getJobTitleId());
     }
 
     @Override
@@ -114,7 +114,7 @@ public class JdbcProviderDao implements ProviderDao {
         provider.setProviderId(row.getInt("provider_id"));
         provider.setFirstName(row.getString("first_name"));
         provider.setLastName(row.getString("last_name"));
-        provider.setJobTitle(row.getString("job_title"));
+        provider.setJobTitleId(row.getInt("job_title_id"));
 
         return provider;
 

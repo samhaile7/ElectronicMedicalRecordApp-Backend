@@ -10,16 +10,15 @@ public class Provider {
     private String firstName;
     @NotBlank (message = "Last name required")
     private String lastName;
-    @NotBlank(message = "Title required")
-    private String jobTitle;
+    private int jobTitleId;
 
     public Provider() {
     }
 
-    public Provider(String firstName, String lastName, String jobTitle) {
+    public Provider(String firstName, String lastName, int jobTitleId) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.jobTitle = jobTitle;
+        this.jobTitleId = jobTitleId;
     }
 
     public int getProviderId() {
@@ -46,11 +45,11 @@ public class Provider {
         this.lastName = lastName;
     }
 
-    public String getJobTitle() {
-        return jobTitle;
+    public int getJobTitleId() {
+        return jobTitleId;
     }
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+    public void setJobTitleId(int jobTitleId) {
+        this.jobTitleId = jobTitleId;
     }
 }
