@@ -104,13 +104,6 @@ public class JdbcProviderDao implements ProviderDao {
             List<Patient> listOfPatientsUnderProvider = new ArrayList<>();
 
 
-//            String sql = "SELECT patient.patient_id, first_name, last_name, birth_date, admit_date, pulse_rate, " +
-//                    "  respiration_rate, systolic_bp, diastolic_bp, sp_O2, temperature, " +
-//                    " partial_thromboplastin_time, mobility_status_id  " +
-//                    "FROM patient" +
-//                    "JOIN patient_provider " +
-//                    "ON patient.patient_id = patient_provider.patient_id" +
-//                    "WHERE patient_provider.provider_id = ?; ";
 
             String sql ="SELECT patient.patient_id, first_name, last_name, birth_date, admit_date, pulse_rate,  " +
                     "                      respiration_rate, systolic_bp, diastolic_bp, sp_O2, temperature,  " +
