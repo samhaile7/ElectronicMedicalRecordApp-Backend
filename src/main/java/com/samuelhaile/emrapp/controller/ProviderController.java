@@ -51,6 +51,12 @@ public class ProviderController {
         return providerDao.createProvider(newProvider);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/providers/{providerId}/pickup", method = RequestMethod.POST)
+    public void pickupPatient(@RequestBody @Valid Patient patient, @PathVariable int providerId) {
+         providerDao.pickUpPatient(patient.getPatientId(), providerId);
+    }
+
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/providers/{providerId}", method = RequestMethod.DELETE)
     public void deleteProvider( @PathVariable int providerId) {
