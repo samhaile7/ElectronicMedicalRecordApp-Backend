@@ -15,6 +15,9 @@ public interface ProviderDao {
     Provider createProvider(Provider provider);
     void deleteProvider(int providerId);
     void updateProvider(Provider provider);
+
+    void pickUpPatient(int patientId, int providerId);
+
     List<Patient> listAllPatientsUnderProvider(int providerId);
 
 
