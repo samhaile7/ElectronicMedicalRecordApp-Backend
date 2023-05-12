@@ -98,6 +98,9 @@ VALUES (1, 'Serena', 'Williams', 3);
 INSERT INTO provider (provider_id, first_name, last_name, job_title_id)
 VALUES (2, 'Venus', 'Williams', 2);
 
+INSERT INTO patient_provider (patient_id, provider_id) 
+VALUES (1, 1);
+
 
 
 
