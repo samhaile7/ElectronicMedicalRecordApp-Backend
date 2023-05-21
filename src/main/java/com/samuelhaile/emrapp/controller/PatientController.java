@@ -5,6 +5,7 @@ import com.samuelhaile.emrapp.model.Patient;
 import com.samuelhaile.emrapp.model.RangeCheckerService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -26,7 +27,6 @@ public class PatientController {
     public String getTestMessage() {
         return "This is a message that should display";
     }
-
 
     @RequestMapping(path = "/patients", method = RequestMethod.GET)
     public List<Patient> listAllPatients() {
