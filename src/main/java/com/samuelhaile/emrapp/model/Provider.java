@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 public class Provider {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int providerId;
+    private Long providerId;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
@@ -20,7 +20,7 @@ public class Provider {
     public Provider() {
     }
 
-    public Provider(int providerId, String firstName, String lastName, String email, int jobTitleId) {
+    public Provider(Long providerId, String firstName, String lastName, String email, int jobTitleId) {
         this.providerId = providerId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,11 +34,11 @@ public class Provider {
         this.jobTitleId = jobTitleId;
     }
 
-    public int getProviderId() {
+    public Long getProviderId() {
         return providerId;
     }
 
-    public void setProviderId(int providerId) {
+    public void setProviderId(Long providerId) {
         this.providerId = providerId;
     }
 
