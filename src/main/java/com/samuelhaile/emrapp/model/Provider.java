@@ -28,12 +28,6 @@ public class Provider {
         this.jobTitleId = jobTitleId;
     }
 
-    public Provider(String firstName, String lastName, int jobTitleId) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.jobTitleId = jobTitleId;
-    }
-
     public Long getProviderId() {
         return providerId;
     }
