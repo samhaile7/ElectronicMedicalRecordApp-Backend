@@ -1,47 +1,49 @@
 package com.samuelhaile.emrapp.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
+@Entity(name = "Patient")
 public class Patient {
 
     //Attributes
-
-    private int patientId;
-    @NotBlank (message = "First name required")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long patientId;
+    @Column(nullable = false)
     private String firstName;
-    @NotBlank (message = "Last name required")
+    @Column(nullable = false)
     private String lastName;
-    @NotNull (message = "Birth date required")
+    @Column(nullable = false)
     private LocalDate birthDate;
-    @NotNull (message = "Admit date required")
+    @Column(nullable = false)
     private LocalDate admitDate;
-    @NotNull (message = "Pulse rate required")
+    @Column(nullable = false)
     private int pulseRate;
-    @NotNull (message = "Respiration rate required")
+    @Column(nullable = false)
     private int respirationRate;
-    @NotNull (message = "Temperature required")
+    @Column(nullable = false)
     private int temperature;
-    @NotNull (message = "SpO2 required")
+    @Column(nullable = false)
     private int sPO2;
-    @NotNull (message = "PTT required")
+    @Column(nullable = false)
     private int partialThromboplastinTime;
-    @NotNull (message = "Systolic Pressure required")
+    @Column(nullable = false)
     private int systolicBloodPressure;
-    @NotNull (message = "Diastolic Pressure required")
+    @Column(nullable = false)
     private int diastolicBloodPressure;
+    @Column(nullable = false)
 
     private int mobilityStatusId;
-
-
-
 
     public Patient() {
     }
 
-    public Patient(String firstName, String lastName, LocalDate birthDate, LocalDate admitDate, int pulseRate, int respirationRate, int temperature, int sPO2, int partialThromboplastinTime, int systolicBloodPressure, int diastolicBloodPressure, int mobilityStatusId) {
+    public Patient(Long patientId, String firstName, String lastName, LocalDate birthDate, LocalDate admitDate, int pulseRate, int respirationRate, int temperature, int sPO2, int partialThromboplastinTime, int systolicBloodPressure, int diastolicBloodPressure, int mobilityStatusId) {
+        this.patientId = patientId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -56,11 +58,11 @@ public class Patient {
         this.mobilityStatusId = mobilityStatusId;
     }
 
-    public int getPatientId() {
+    public Long getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(int patientId) {
+    public void setPatientId(Long patientId) {
         this.patientId = patientId;
     }
 
@@ -94,14 +96,6 @@ public class Patient {
 
     public void setAdmitDate(LocalDate admitDate) {
         this.admitDate = admitDate;
-    }
-
-    public int getMobilityStatusId() {
-        return mobilityStatusId;
-    }
-
-    public void setMobilityStatusId(int mobilityStatusId) {
-        this.mobilityStatusId = mobilityStatusId;
     }
 
     public int getPulseRate() {
@@ -158,6 +152,14 @@ public class Patient {
 
     public void setDiastolicBloodPressure(int diastolicBloodPressure) {
         this.diastolicBloodPressure = diastolicBloodPressure;
+    }
+
+    public int getMobilityStatusId() {
+        return mobilityStatusId;
+    }
+
+    public void setMobilityStatusId(int mobilityStatusId) {
+        this.mobilityStatusId = mobilityStatusId;
     }
 
     @Override
