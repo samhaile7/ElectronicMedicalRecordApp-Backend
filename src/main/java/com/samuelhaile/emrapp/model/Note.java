@@ -1,36 +1,47 @@
 package com.samuelhaile.emrapp.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
+
+@Entity(name = "Note")
 
 public class Note {
 
-    private int noteId;
-    private int patientId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long noteId;
+    @Column(nullable = false)
+    private Long patientId;
+    @Column(nullable = false)
     private String noteDetails;
+    @Column(nullable = false)
     private LocalDate dateNoteAdded;
 
     public Note() {
     }
 
-    public Note(int patientId, String noteDetails, LocalDate dateNoteAdded) {
+
+    public Note(Long noteId, Long patientId, String noteDetails, LocalDate dateNoteAdded) {
+        this.noteId = noteId;
         this.patientId = patientId;
         this.noteDetails = noteDetails;
         this.dateNoteAdded = dateNoteAdded;
     }
 
-    public int getNoteId() {
+    public Long getNoteId() {
         return noteId;
     }
 
-    public void setNoteId(int noteId) {
+    public void setNoteId(Long noteId) {
         this.noteId = noteId;
     }
 
-    public int getPatientId() {
+    public Long getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(int patientId) {
+    public void setPatientId(Long patientId) {
         this.patientId = patientId;
     }
 
@@ -50,13 +61,4 @@ public class Note {
         this.dateNoteAdded = dateNoteAdded;
     }
 
-    @Override
-    public String toString() {
-        return "Note{" +
-                "noteId=" + noteId +
-                ", patientId=" + patientId +
-                ", noteDetails='" + noteDetails + '\'' +
-                ", dateNoteAdded=" + dateNoteAdded +
-                '}';
-    }
 }
