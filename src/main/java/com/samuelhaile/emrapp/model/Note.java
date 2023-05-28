@@ -24,11 +24,11 @@ public class Note {
     public Note() {
     }
 
-
-    public Note(Long noteId, Long patientId, String noteDetails, LocalDate dateNoteAdded) {
+    public Note(Long noteId, String noteDetails, LocalDate dateNoteAdded, Patient patient) {
         this.noteId = noteId;
         this.noteDetails = noteDetails;
         this.dateNoteAdded = dateNoteAdded;
+        this.patient = patient;
     }
 
     public Long getNoteId() {
@@ -38,8 +38,6 @@ public class Note {
     public void setNoteId(Long noteId) {
         this.noteId = noteId;
     }
-
-
 
     public String getNoteDetails() {
         return noteDetails;
@@ -57,4 +55,11 @@ public class Note {
         this.dateNoteAdded = dateNoteAdded;
     }
 
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 }
