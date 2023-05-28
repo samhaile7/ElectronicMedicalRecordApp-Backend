@@ -3,6 +3,8 @@ package com.samuelhaile.emrapp.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.List;
+
 @Entity(name = "Provider")
 public class Provider {
     @Id
@@ -14,18 +16,26 @@ public class Provider {
     private String lastName;
     @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
-    private int jobTitleId;
+
+    @ManyToOne
+    @JoinColumn(name = "job_id")
+    private Job job;
+
+    @ManyToMany(mappedBy = "patientProviders")
+    List<Patient> patientsUnderProvider;
+
+
+
 
     public Provider() {
     }
 
-    public Provider(Long providerId, String firstName, String lastName, String email, int jobTitleId) {
+    public Provider(Long providerId, String firstName, String lastName, String email, Job job) {
         this.providerId = providerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.jobTitleId = jobTitleId;
+        this.job = job;
     }
 
     public Long getProviderId() {
@@ -60,22 +70,11 @@ public class Provider {
         this.email = email;
     }
 
-    public int getJobTitleId() {
-        return jobTitleId;
+    public Job getJob() {
+        return job;
     }
 
-    public void setJobTitleId(int jobTitleId) {
-        this.jobTitleId = jobTitleId;
-    }
-
-    @Override
-    public String toString() {
-        return "Provider{" +
-                "providerId=" + providerId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", jobTitleId=" + jobTitleId +
-                '}';
+    public void setJob(Job job) {
+        this.job = job;
     }
 }
