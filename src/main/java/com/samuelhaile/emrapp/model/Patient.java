@@ -41,6 +41,17 @@ public class Patient {
     @OneToMany(mappedBy = "patient")
     private List<Note> patientNotes;
 
+    @ManyToOne
+    @JoinColumn(name = "mobility_status_id")
+    private MobilityStatus mobilityStatus;
+
+    @ManyToMany
+    @JoinTable(
+            name = "patient_provider",
+            joinColumns = @JoinColumn(name = "patient_id"),
+            inverseJoinColumns = @JoinColumn(name = "provider_id"))
+    List<Provider> patientProviders;
+
 
 
 
