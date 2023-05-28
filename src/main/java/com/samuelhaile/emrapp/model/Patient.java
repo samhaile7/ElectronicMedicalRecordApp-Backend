@@ -48,7 +48,7 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(Long patientId, String firstName, String lastName, LocalDate birthDate, LocalDate admitDate, int pulseRate, int respirationRate, int temperature, int sPO2, int partialThromboplastinTime, int systolicBloodPressure, int diastolicBloodPressure, MobilityStatus mobilityStatus) {
+    public Patient(Long patientId, String firstName, String lastName, LocalDate birthDate, LocalDate admitDate, int pulseRate, int respirationRate, int temperature, int sPO2, int partialThromboplastinTime, int systolicBloodPressure, int diastolicBloodPressure, List<Note> patientNotes) {
         this.patientId = patientId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -61,6 +61,7 @@ public class Patient {
         this.partialThromboplastinTime = partialThromboplastinTime;
         this.systolicBloodPressure = systolicBloodPressure;
         this.diastolicBloodPressure = diastolicBloodPressure;
+        this.patientNotes = patientNotes;
     }
 
     public Long getPatientId() {
@@ -159,24 +160,11 @@ public class Patient {
         this.diastolicBloodPressure = diastolicBloodPressure;
     }
 
+    public List<Note> getPatientNotes() {
+        return patientNotes;
+    }
 
-
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "patientId=" + patientId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthDate=" + birthDate +
-                ", admitDate=" + admitDate +
-                ", pulseRate=" + pulseRate +
-                ", respirationRate=" + respirationRate +
-                ", temperature=" + temperature +
-                ", sPO2=" + sPO2 +
-                ", partialThromboplastinTime=" + partialThromboplastinTime +
-                ", systolicBloodPressure=" + systolicBloodPressure +
-                ", diastolicBloodPressure=" + diastolicBloodPressure +
-
-                '}';
+    public void setPatientNotes(List<Note> patientNotes) {
+        this.patientNotes = patientNotes;
     }
 }
