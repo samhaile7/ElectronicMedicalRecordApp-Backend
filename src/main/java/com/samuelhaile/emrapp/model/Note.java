@@ -12,11 +12,14 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long noteId;
     @Column(nullable = false)
-    private Long patientId;
-    @Column(nullable = false)
     private String noteDetails;
     @Column(nullable = false)
     private LocalDate dateNoteAdded;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
+
 
     public Note() {
     }
@@ -24,7 +27,6 @@ public class Note {
 
     public Note(Long noteId, Long patientId, String noteDetails, LocalDate dateNoteAdded) {
         this.noteId = noteId;
-        this.patientId = patientId;
         this.noteDetails = noteDetails;
         this.dateNoteAdded = dateNoteAdded;
     }
@@ -37,13 +39,7 @@ public class Note {
         this.noteId = noteId;
     }
 
-    public Long getPatientId() {
-        return patientId;
-    }
 
-    public void setPatientId(Long patientId) {
-        this.patientId = patientId;
-    }
 
     public String getNoteDetails() {
         return noteDetails;

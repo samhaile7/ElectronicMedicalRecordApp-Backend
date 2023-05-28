@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "Patient")
 public class Patient {
@@ -35,14 +37,18 @@ public class Patient {
     private int systolicBloodPressure;
     @Column(nullable = false)
     private int diastolicBloodPressure;
-    @Column(nullable = false)
 
-    private int mobilityStatusId;
+    @OneToMany(mappedBy = "patient")
+    private List<Note> patientNotes;
+
+
+
+
 
     public Patient() {
     }
 
-    public Patient(Long patientId, String firstName, String lastName, LocalDate birthDate, LocalDate admitDate, int pulseRate, int respirationRate, int temperature, int sPO2, int partialThromboplastinTime, int systolicBloodPressure, int diastolicBloodPressure, int mobilityStatusId) {
+    public Patient(Long patientId, String firstName, String lastName, LocalDate birthDate, LocalDate admitDate, int pulseRate, int respirationRate, int temperature, int sPO2, int partialThromboplastinTime, int systolicBloodPressure, int diastolicBloodPressure, MobilityStatus mobilityStatus) {
         this.patientId = patientId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -55,7 +61,6 @@ public class Patient {
         this.partialThromboplastinTime = partialThromboplastinTime;
         this.systolicBloodPressure = systolicBloodPressure;
         this.diastolicBloodPressure = diastolicBloodPressure;
-        this.mobilityStatusId = mobilityStatusId;
     }
 
     public Long getPatientId() {
@@ -154,13 +159,7 @@ public class Patient {
         this.diastolicBloodPressure = diastolicBloodPressure;
     }
 
-    public int getMobilityStatusId() {
-        return mobilityStatusId;
-    }
 
-    public void setMobilityStatusId(int mobilityStatusId) {
-        this.mobilityStatusId = mobilityStatusId;
-    }
 
     @Override
     public String toString() {
@@ -177,7 +176,7 @@ public class Patient {
                 ", partialThromboplastinTime=" + partialThromboplastinTime +
                 ", systolicBloodPressure=" + systolicBloodPressure +
                 ", diastolicBloodPressure=" + diastolicBloodPressure +
-                ", mobilityStatusId=" + mobilityStatusId +
+
                 '}';
     }
 }
