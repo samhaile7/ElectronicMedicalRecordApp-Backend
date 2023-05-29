@@ -5,7 +5,9 @@ import com.samuelhaile.emrapp.MobilityStatusRepository;
 import com.samuelhaile.emrapp.PatientRepository;
 import com.samuelhaile.emrapp.ProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RangeCheckerService {
 
     // Add min and max lab values here, final constants
