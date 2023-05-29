@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface NoteRepository extends JpaRepository<Note, Long> {
 
-   Note findByPatientId(Long patientId);
+   Note findByNoteId(Long noteId);
 
 
 
