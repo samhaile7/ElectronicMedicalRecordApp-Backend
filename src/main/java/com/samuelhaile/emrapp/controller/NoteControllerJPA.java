@@ -40,11 +40,10 @@ public class NoteControllerJPA {
 
     @RequestMapping(path = "/notes/patient/{patientId}", method = RequestMethod.GET)
     public List<Note> getNotesByPatientId(@PathVariable Long patientId) {
-        List<Note> allNotes = patientRepository.findByPatientId(patientId).getPatientNotes();
-        if (allNotes == null) {
+        if (patientRepository.findByPatientId(patientId) == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Notes Found");
         } else {
-            return allNotes;
+            return patientRepository.findByPatientId(patientId).getPatientNotes();
         }
     }
 
