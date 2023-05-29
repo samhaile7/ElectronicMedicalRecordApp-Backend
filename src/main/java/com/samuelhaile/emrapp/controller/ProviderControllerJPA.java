@@ -3,6 +3,7 @@ package com.samuelhaile.emrapp.controller;
 
 import com.samuelhaile.emrapp.ProviderRepository;
 import com.samuelhaile.emrapp.dao.ProviderDao;
+import com.samuelhaile.emrapp.model.Job;
 import com.samuelhaile.emrapp.model.Patient;
 import com.samuelhaile.emrapp.model.Provider;
 import jakarta.validation.Valid;
@@ -77,15 +78,15 @@ public class ProviderControllerJPA {
         providerRepository.save(providerToUpdate);
     }
 
-//
-//    @RequestMapping(path = "/providers/{providerId}/patients", method = RequestMethod.GET)
-//    public List<Patient> getAllPatientsByProvider(@PathVariable int providerId) {
-//        return providerDao.listAllPatientsUnderProvider(providerId);
-//    }
-//
-//    @RequestMapping(path = "/providers/{providerId}/role", method = RequestMethod.GET)
-//    public String getProviderRoleByProviderId(@PathVariable int providerId) {
-//        return providerDao.getProviderRole(providerId);
-//    }
+
+        @RequestMapping(path = "/providers/{providerId}/patients", method = RequestMethod.GET)
+    public List<Patient> getAllPatientsByProvider(@PathVariable Long providerId) {
+        return providerRepository.findByProviderId(providerId).getPatientsUnderProvider();
+    }
+
+    @RequestMapping(path = "/providers/{providerId}/role", method = RequestMethod.GET)
+    public Job getProviderRoleByProviderId(@PathVariable Long providerId) {
+        return providerRepository.findByProviderId(providerId).getJob();
+    }
 
 }

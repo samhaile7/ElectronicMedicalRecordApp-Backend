@@ -72,24 +72,24 @@ CREATE TABLE patient_provider(
 	CONSTRAINT FK_patient_provider_provider FOREIGN KEY(provider_id) REFERENCES provider (provider_id));
 	
 
-INSERT INTO mobility_status (mobility_status_description) VALUES ('Clear');
-INSERT INTO mobility_status (mobility_status_description) VALUES ('Not Clear');
+INSERT INTO mobility_status (status_description) VALUES ('Clear');
+INSERT INTO mobility_status (status_description) VALUES ('Not Clear');
 
-INSERT INTO job_title (job_title_name) VALUES ('Physician');
-INSERT INTO job_title (job_title_name) VALUES ('Nurse');
-INSERT INTO job_title (job_title_name) VALUES ('Occupational Therapist');
-INSERT INTO job_title (job_title_name) VALUES ('Physical Therapist');
+INSERT INTO job (job_title) VALUES ('Physician');
+INSERT INTO job (job_title) VALUES ('Nurse');
+INSERT INTO job (job_title) VALUES ('Occupational Therapist');
+INSERT INTO job (job_title) VALUES ('Physical Therapist');
 
-INSERT INTO patient (first_name, last_name, birth_date, admit_date, pulse_rate, respiration_rate, systolic_bp, diastolic_bp, sp_O2, temperature, partial_thromboplastin_time, mobility_status_id)
+INSERT INTO patient (first_name, last_name, birth_date, admit_date, pulse_rate, respiration_rate, systolic_blood_pressure, diastolic_blood_pressure, sp_O2, temperature, partial_thromboplastin_time, mobility_status_id)
 VALUES ('John', 'Doe', '1994-01-01', '2023-01-01', 54, 50, 120, 80, 99, 97, 1, 1);
 
-INSERT INTO patient (first_name, last_name, birth_date, admit_date,pulse_rate, respiration_rate, systolic_bp, diastolic_bp, sp_O2, temperature, partial_thromboplastin_time, mobility_status_id)
+INSERT INTO patient (first_name, last_name, birth_date, admit_date,pulse_rate, respiration_rate, systolic_blood_pressure, diastolic_blood_pressure, sp_O2, temperature, partial_thromboplastin_time, mobility_status_id)
 VALUES ('Jane', 'Smith', '1978-01-01', '2022-04-04', 60, 50, 165, 99, 99, 97, 1, 2 );
 
-INSERT INTO patient_note (patient_id , note_details , date_added )
+INSERT INTO note (patient_id , note_details , date_added )
 VALUES (1, 'This is a note', '2023-03-14');
 
-INSERT INTO patient_note (patient_id , note_details , date_added )
+INSERT INTO note (patient_id , note_details , date_added )
 VALUES (2, 'This is a note', '2023-03-15');
 
 INSERT INTO provider (provider_id, first_name, last_name, job_title_id)

@@ -21,8 +21,11 @@ public class Provider {
     @JoinColumn(name = "job_id")
     private Job job;
 
-    @ManyToMany(mappedBy = "patientProviders")
-    List<Patient> patientsUnderProvider;
+    @OneToMany(mappedBy = "provider")
+    private List<Patient> patientsUnderProvider;
+
+//    @ManyToMany(mappedBy = "patientProviders")
+//    List<Patient> patientsUnderProvider;
 
 
 
@@ -30,12 +33,13 @@ public class Provider {
     public Provider() {
     }
 
-    public Provider(Long providerId, String firstName, String lastName, String email, Job job) {
+    public Provider(Long providerId, String firstName, String lastName, String email, Job job, List<Patient> patientsUnderProvider) {
         this.providerId = providerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.job = job;
+        this.patientsUnderProvider = patientsUnderProvider;
     }
 
     public Long getProviderId() {
@@ -76,5 +80,13 @@ public class Provider {
 
     public void setJob(Job job) {
         this.job = job;
+    }
+
+    public List<Patient> getPatientsUnderProvider() {
+        return patientsUnderProvider;
+    }
+
+    public void setPatientsUnderProvider(List<Patient> patientsUnderProvider) {
+        this.patientsUnderProvider = patientsUnderProvider;
     }
 }
