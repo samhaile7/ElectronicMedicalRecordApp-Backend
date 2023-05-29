@@ -1,6 +1,7 @@
 package com.samuelhaile.emrapp.controller;
 
 
+import com.samuelhaile.emrapp.PatientRepository;
 import com.samuelhaile.emrapp.ProviderRepository;
 import com.samuelhaile.emrapp.dao.ProviderDao;
 import com.samuelhaile.emrapp.model.Job;
@@ -22,11 +23,8 @@ public class ProviderControllerJPA {
 
     @Autowired
     ProviderRepository providerRepository;
-
-
-
-
-
+    @Autowired
+    PatientRepository patientRepository;
 
     @RequestMapping(path = "/providers", method = RequestMethod.GET)
     public List<Provider> listAllProviders() {
@@ -49,13 +47,14 @@ public class ProviderControllerJPA {
     public Provider createProvider(@RequestBody @Valid Provider newProvider) {
         return providerRepository.save(newProvider);
     }
-//
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @RequestMapping(path = "/providers/{providerId}/pickup", method = RequestMethod.POST)
-//    public void pickupPatient(@RequestBody @Valid Patient patient, @PathVariable int providerId) {
-//         providerDao.pickUpPatient(patient.getPatientId(), providerId);
-//    }
-//
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/providers/{providerId}/pickup", method = RequestMethod.POST)
+    public void pickupPatient(@RequestBody @Valid Patient patient, @PathVariable long providerId) {
+                 patient.setProvider(providerRepository.findByProviderId(providerId));
+                 patientRepository.save(patient);
+    }
+
 
 
         @ResponseStatus(HttpStatus.NO_CONTENT)
