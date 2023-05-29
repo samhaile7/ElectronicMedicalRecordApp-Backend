@@ -1,10 +1,9 @@
 package com.samuelhaile.emrapp.controller;
 
 
-import com.samuelhaile.emrapp.NoteRepository;
-import com.samuelhaile.emrapp.PatientRepository;
-import com.samuelhaile.emrapp.ProviderRepository;
-import com.samuelhaile.emrapp.dao.NoteDao;
+import com.samuelhaile.emrapp.repo.NoteRepository;
+import com.samuelhaile.emrapp.repo.PatientRepository;
+import com.samuelhaile.emrapp.repo.ProviderRepository;
 import com.samuelhaile.emrapp.model.Note;
 import com.samuelhaile.emrapp.model.RangeCheckerService;
 import jakarta.validation.Valid;

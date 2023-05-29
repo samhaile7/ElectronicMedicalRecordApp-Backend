@@ -1,9 +1,8 @@
 package com.samuelhaile.emrapp.controller;
 
 
-import com.samuelhaile.emrapp.PatientRepository;
-import com.samuelhaile.emrapp.ProviderRepository;
-import com.samuelhaile.emrapp.dao.ProviderDao;
+import com.samuelhaile.emrapp.repo.PatientRepository;
+import com.samuelhaile.emrapp.repo.ProviderRepository;
 import com.samuelhaile.emrapp.model.Job;
 import com.samuelhaile.emrapp.model.Patient;
 import com.samuelhaile.emrapp.model.Provider;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin

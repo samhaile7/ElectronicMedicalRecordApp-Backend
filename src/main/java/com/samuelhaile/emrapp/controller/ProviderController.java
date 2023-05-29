@@ -1,7 +1,7 @@
 //package com.samuelhaile.emrapp.controller;
 //
 //
-//import com.samuelhaile.emrapp.ProviderRepository;
+//import com.samuelhaile.emrapp.repo.ProviderRepository;
 //import com.samuelhaile.emrapp.dao.PatientDao;
 //import com.samuelhaile.emrapp.dao.ProviderDao;
 //import com.samuelhaile.emrapp.model.Patient;

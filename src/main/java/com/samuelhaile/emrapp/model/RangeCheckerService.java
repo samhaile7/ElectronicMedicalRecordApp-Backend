@@ -1,9 +1,9 @@
 package com.samuelhaile.emrapp.model;
 
 
-import com.samuelhaile.emrapp.MobilityStatusRepository;
-import com.samuelhaile.emrapp.PatientRepository;
-import com.samuelhaile.emrapp.ProviderRepository;
+import com.samuelhaile.emrapp.repo.MobilityStatusRepository;
+import com.samuelhaile.emrapp.repo.PatientRepository;
+import com.samuelhaile.emrapp.repo.ProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

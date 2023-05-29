@@ -1,4 +1,4 @@
-package com.samuelhaile.emrapp;
+package com.samuelhaile.emrapp.repo;
 
 import com.samuelhaile.emrapp.model.MobilityStatus;
 import com.samuelhaile.emrapp.model.Note;
