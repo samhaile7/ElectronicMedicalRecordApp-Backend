@@ -33,13 +33,12 @@ public class ProviderControllerJPA {
 
         @RequestMapping(path = "/providers/{providerId}", method = RequestMethod.GET)
     public Provider getProviderById(@PathVariable Long providerId) {
-        Provider provider = providerRepository.findByProviderId(providerId);
-        if (provider == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
-        } else {
-            return provider;
+            if (providerRepository.findByProviderId(providerId) == null){
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
+            }
+            return providerRepository.findByProviderId(providerId);
         }
-    }
+
 
 
         @ResponseStatus(HttpStatus.CREATED)
@@ -51,6 +50,9 @@ public class ProviderControllerJPA {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/providers/{providerId}/pickup", method = RequestMethod.POST)
     public void pickupPatient(@RequestBody @Valid Patient patient, @PathVariable long providerId) {
+        if (providerRepository.findByProviderId(providerId) == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
+        }
                  patient.setProvider(providerRepository.findByProviderId(providerId));
                  patientRepository.save(patient);
     }
@@ -80,11 +82,18 @@ public class ProviderControllerJPA {
 
         @RequestMapping(path = "/providers/{providerId}/patients", method = RequestMethod.GET)
     public List<Patient> getAllPatientsByProvider(@PathVariable Long providerId) {
+        if (providerRepository.findByProviderId(providerId) == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
+        }
         return providerRepository.findByProviderId(providerId).getPatientsUnderProvider();
     }
 
     @RequestMapping(path = "/providers/{providerId}/role", method = RequestMethod.GET)
     public Job getProviderRoleByProviderId(@PathVariable Long providerId) {
+
+        if (providerRepository.findByProviderId(providerId) == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
+        }
         return providerRepository.findByProviderId(providerId).getJob();
     }
 
