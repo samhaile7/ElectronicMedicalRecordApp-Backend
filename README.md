@@ -1,3 +1,6 @@
+![](Assets/primeehr-logo-zip-file/png/logo-no-background.png)
+
+
 # Electronic Medical Record App
 
 
