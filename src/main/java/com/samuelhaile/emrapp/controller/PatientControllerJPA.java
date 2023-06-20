@@ -68,4 +68,6 @@ public class PatientControllerJPA {
         patientRepository.save(patientWithUpdatedMobilityStatus);
     }
 
+    //Add association for join table here
+
 }
