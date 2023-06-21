@@ -45,16 +45,17 @@ public class Patient {
     @JoinColumn(name = "mobility_status_id")
     private MobilityStatus mobilityStatus;
 
-    @ManyToOne
-    @JoinColumn(name = "provider_id")
-    private Provider provider;
+//    @ManyToOne
+//    @JoinColumn(name = "provider_id")
+//    private Provider provider;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "patient_provider",
-//            joinColumns = @JoinColumn(name = "patient_id"),
-//            inverseJoinColumns = @JoinColumn(name = "provider_id"))
-//    List<Provider> patientProviders;
+    @ManyToMany
+    @JoinTable(
+            name = "patient_provider",
+            joinColumns = @JoinColumn(name = "patient_id"),
+            inverseJoinColumns = @JoinColumn(name = "provider_id"))
+
+     private List<Provider> Providers;
 
 
 
@@ -63,7 +64,7 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(Long patientId, String firstName, String lastName, LocalDate birthDate, LocalDate admitDate, int pulseRate, int respirationRate, int temperature, int sPO2, int partialThromboplastinTime, int systolicBloodPressure, int diastolicBloodPressure, List<Note> patientNotes, MobilityStatus mobilityStatus, Provider provider) {
+    public Patient(Long patientId, String firstName, String lastName, LocalDate birthDate, LocalDate admitDate, int pulseRate, int respirationRate, int temperature, int sPO2, int partialThromboplastinTime, int systolicBloodPressure, int diastolicBloodPressure, List<Note> patientNotes, MobilityStatus mobilityStatus) {
         this.patientId = patientId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -78,7 +79,6 @@ public class Patient {
         this.diastolicBloodPressure = diastolicBloodPressure;
         this.patientNotes = patientNotes;
         this.mobilityStatus = mobilityStatus;
-        this.provider = provider;
     }
 
     public Long getPatientId() {
@@ -193,11 +193,5 @@ public class Patient {
         this.mobilityStatus = mobilityStatus;
     }
 
-    public Provider getProvider() {
-        return provider;
-    }
 
-    public void setProvider(Provider provider) {
-        this.provider = provider;
-    }
 }

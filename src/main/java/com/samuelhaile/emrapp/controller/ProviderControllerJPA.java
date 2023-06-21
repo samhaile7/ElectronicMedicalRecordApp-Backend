@@ -45,15 +45,15 @@ public class ProviderControllerJPA {
         return providerRepository.save(newProvider);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/providers/{providerId}/pickup", method = RequestMethod.POST)
-    public void pickupPatient(@RequestBody @Valid Patient patient, @PathVariable long providerId) {
-        if (providerRepository.findByProviderId(providerId) == null){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
-        }
-                 patient.setProvider(providerRepository.findByProviderId(providerId));
-                 patientRepository.save(patient);
-    }
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @RequestMapping(path = "/providers/{providerId}/pickup", method = RequestMethod.POST)
+//    public void pickupPatient(@RequestBody @Valid Patient patient, @PathVariable long providerId) {
+//        if (providerRepository.findByProviderId(providerId) == null){
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
+//        }
+//                 patient.setProvider(providerRepository.findByProviderId(providerId));
+//                 patientRepository.save(patient);
+//    }
 
 
 
@@ -78,13 +78,13 @@ public class ProviderControllerJPA {
     }
 
 
-        @RequestMapping(path = "/providers/{providerId}/patients", method = RequestMethod.GET)
-    public List<Patient> getAllPatientsByProvider(@PathVariable Long providerId) {
-        if (providerRepository.findByProviderId(providerId) == null){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
-        }
-        return providerRepository.findByProviderId(providerId).getPatientsUnderProvider();
-    }
+//        @RequestMapping(path = "/providers/{providerId}/patients", method = RequestMethod.GET)
+//    public List<Patient> getAllPatientsByProvider(@PathVariable Long providerId) {
+//        if (providerRepository.findByProviderId(providerId) == null){
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
+//        }
+//        return providerRepository.findByProviderId(providerId).getPatientsUnderProvider();
+//    }
 
     @RequestMapping(path = "/providers/{providerId}/role", method = RequestMethod.GET)
     public Job getProviderRoleByProviderId(@PathVariable Long providerId) {
