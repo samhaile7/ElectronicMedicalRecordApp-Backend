@@ -29,6 +29,12 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Maven version
-      run: mvn -v
+      run: mvn package
+
+    - name: Maven version
+      run: ls
+      
+
+  
 
    
