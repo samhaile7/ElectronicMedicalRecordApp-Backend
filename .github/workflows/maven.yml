@@ -35,3 +35,7 @@ jobs:
         
       - name: After
         run: ls -la
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: target/ # or path/to/artifact
