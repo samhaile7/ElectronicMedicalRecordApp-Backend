@@ -26,7 +26,12 @@ jobs:
           java-version: "17"
           distribution: temurin
           cache: maven
+
+      - name: Before
+        run: ls -la
+        
       - name: Maven version
         run: mvn package
-      - name: Maven version
-        run: ls
+        
+      - name: After
+        run: ls -la
