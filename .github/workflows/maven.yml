@@ -26,19 +26,15 @@ jobs:
           java-version: "17"
           distribution: temurin
           cache: maven
-
       - name: Before
         run: ls -la
-        
       - name: Maven version
         run: mvn install
-        
       - name: After
         run: ls -la
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: target/ # or path/to/artifact
-
-       - name: run it
-         run: java -jar target/*.original
+          path: target/
+      - name: run it
+        run: java -jar target/*.original
