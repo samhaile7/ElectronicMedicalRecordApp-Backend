@@ -31,7 +31,7 @@ jobs:
         run: ls -la
         
       - name: Maven version
-        run: mvn package
+        run: mvn install
         
       - name: After
         run: ls -la
