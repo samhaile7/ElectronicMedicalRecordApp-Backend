@@ -40,5 +40,5 @@ jobs:
           name: my-artifact
           path: target/ # or path/to/artifact
 
-     - name: run it
-       run: java -jar target/*.original
+       - name: run it
+         run: java -jar target/*.original
