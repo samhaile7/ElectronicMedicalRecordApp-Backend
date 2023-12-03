@@ -23,7 +23,7 @@ public class PatientController {
         this.patientDao = patientDao;
     }
 
-    @RequestMapping(path = "/test", method = RequestMethod.GET)
+    @RequestMapping(path = "/", method = RequestMethod.GET)
     public String getTestMessage() {
         return "This is a message that should display";
     }
