@@ -1,0 +1,12 @@
+version: '3'
+services:
+  emrapp-postgres-db:
+    image: postgres
+    container_name: emrapp-postgres-db
+    environment:
+      POSTGRES_DB: emrapp-db-postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ${PWD}/database:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
