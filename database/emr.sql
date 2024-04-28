@@ -79,6 +79,8 @@ INSERT INTO job_title (job_title_name) VALUES ('Physician');
 INSERT INTO job_title (job_title_name) VALUES ('Nurse');
 INSERT INTO job_title (job_title_name) VALUES ('Occupational Therapist');
 INSERT INTO job_title (job_title_name) VALUES ('Physical Therapist');
+INSERT INTO job_title (job_title_name) VALUES ('Health Aide');
+INSERT INTO job_title (job_title_name) VALUES ('Social Worker');
 
 
 
