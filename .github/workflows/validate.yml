@@ -20,16 +20,17 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: 'maven'
 
-      - name: Build with Maven
+      - name: Maven build
         run: mvn clean package
 
       - name: Docker Compose Up
         run: |
           docker-compose up -d
-
-      - name: Run Spring Boot application
-        run: java -jar target/*.jar
+# Step runs indefinitely as sprinboot app keeps running/listenning
+#      - name: Run Spring Boot application
+#        run: java -jar target/*.jar
 
       - name: Docker Compose Down
         run: |
