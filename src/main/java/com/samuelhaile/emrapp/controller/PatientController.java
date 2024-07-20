@@ -24,7 +24,7 @@ public class PatientController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String getTestMessage() {
-        return "This is a message that should display";
+        return "Welcome to  PrimeEMR!";
     }
 
     @RequestMapping(path = "/patients", method = RequestMethod.GET)
