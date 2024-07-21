@@ -32,5 +32,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: emrapp-artifact
-          path: target/emrapp-0.0.1-SNAPSHOT.jar
+          path: target/emrapp*.jar
 
