@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.samuelhaile</groupId>
 	<artifactId>emrapp</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>emrapp</name>
 	<description>Electronic Medical Record App</description>
 	<properties>
