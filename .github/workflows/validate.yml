@@ -27,10 +27,12 @@ jobs:
 
       - name: Maven build
         run: mvn clean package
+      - name: Get build version
+        run: echo "BUILD_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: emrapp-artifact
+          name: emrapp-artifact-${{ env.BUILD_VERSION }}
           path: target/emrapp*.jar
 
