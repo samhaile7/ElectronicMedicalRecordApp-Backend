@@ -28,4 +28,12 @@ public class Job {
     public void setJobName(String jobName) {
         this.jobName = jobName;
     }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "jobId=" + jobId +
+                ", jobName='" + jobName + '\'' +
+                '}';
+    }
 }
