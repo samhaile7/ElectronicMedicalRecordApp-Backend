@@ -15,24 +15,20 @@ public class JdbcNoteDao implements NoteDao {
 
     private JdbcTemplate jdbcTemplate;
 
-    public JdbcNoteDao(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
     @Override
     public List<Note> listAllNotesByPatientId(int patientId) {
-            List<Note> allNotesForPatient = new ArrayList<>();
-            String sql =
-                    "SELECT note_id, patient_id, note_details, date_added  " +
-                            "                        FROM patient_note " +
-                            "                        WHERE patient_id = ?; ";
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
+        List<Note> allNotesForPatient = new ArrayList<>();
+        String sql =
+                "SELECT note_id, patient_id, note_details, date_added  " +
+                        "                        FROM patient_note " +
+                        "                        WHERE patient_id = ?; ";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
 
-            while (results.next()) {
-                allNotesForPatient.add(mapRowToNote(results));
-            }
-            return allNotesForPatient;
+        while (results.next()) {
+            allNotesForPatient.add(mapRowToNote(results));
         }
+        return allNotesForPatient;
+    }
 
     @Override
     public Note getNoteByNoteId(int noteId) {
@@ -51,13 +47,13 @@ public class JdbcNoteDao implements NoteDao {
 
     @Override
     public Note createNote(Note note) {
-            String sql = "INSERT INTO patient_note (patient_id, note_details, date_added) " +
-                    "VALUES (?, ?, ?) RETURNING note_id;";
-            Integer noteId = jdbcTemplate.queryForObject(sql, Integer.class, note.getPatientId(), note.getNoteDetails(),
-                    note.getDateNoteAdded());
-            note.setNoteId(noteId);
-            return note;
-        }
+        String sql = "INSERT INTO patient_note (patient_id, note_details, date_added) " +
+                "VALUES (?, ?, ?) RETURNING note_id;";
+        Integer noteId = jdbcTemplate.queryForObject(sql, Integer.class, note.getPatientId(), note.getNoteDetails(),
+                note.getDateNoteAdded());
+        note.setNoteId(noteId);
+        return note;
+    }
 
     @Override
     public void deleteNote(int noteId) {
@@ -66,16 +62,15 @@ public class JdbcNoteDao implements NoteDao {
     }
 
 
-
     @Override
     public void updateNote(Note note) {
 
-            String sql = "UPDATE patient_note SET patient_id = ?, note_details = ?, date_added = ? " +
-                    "WHERE note_id = ?;";
+        String sql = "UPDATE patient_note SET patient_id = ?, note_details = ?, date_added = ? " +
+                "WHERE note_id = ?;";
 
-            jdbcTemplate.update(sql, note.getPatientId(), note.getNoteDetails(), note.getDateNoteAdded(), note.getNoteId());
+        jdbcTemplate.update(sql, note.getPatientId(), note.getNoteDetails(), note.getDateNoteAdded(), note.getNoteId());
 
-        }
+    }
 
 
     private Note mapRowToNote(SqlRowSet row) {

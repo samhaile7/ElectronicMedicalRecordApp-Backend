@@ -10,6 +10,7 @@ public interface NoteDao {
     List<Note> listAllNotesByPatientId(int patientId);
 
     Note getNoteByNoteId(int noteId);
+
     Note createNote(Note note);
 
     void deleteNote(int noteId);

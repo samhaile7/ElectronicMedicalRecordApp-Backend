@@ -10,32 +10,30 @@ public class Patient {
     //Attributes
 
     private int patientId;
-    @NotBlank (message = "First name required")
+    @NotBlank(message = "First name required")
     private String firstName;
-    @NotBlank (message = "Last name required")
+    @NotBlank(message = "Last name required")
     private String lastName;
-    @NotNull (message = "Birth date required")
+    @NotNull(message = "Birth date required")
     private LocalDate birthDate;
-    @NotNull (message = "Admit date required")
+    @NotNull(message = "Admit date required")
     private LocalDate admitDate;
-    @NotNull (message = "Pulse rate required")
+    @NotNull(message = "Pulse rate required")
     private int pulseRate;
-    @NotNull (message = "Respiration rate required")
+    @NotNull(message = "Respiration rate required")
     private int respirationRate;
-    @NotNull (message = "Temperature required")
+    @NotNull(message = "Temperature required")
     private int temperature;
-    @NotNull (message = "SpO2 required")
+    @NotNull(message = "SpO2 required")
     private int sPO2;
-    @NotNull (message = "PTT required")
+    @NotNull(message = "PTT required")
     private int partialThromboplastinTime;
-    @NotNull (message = "Systolic Pressure required")
+    @NotNull(message = "Systolic Pressure required")
     private int systolicBloodPressure;
-    @NotNull (message = "Diastolic Pressure required")
+    @NotNull(message = "Diastolic Pressure required")
     private int diastolicBloodPressure;
 
     private int mobilityStatusId;
-
-
 
 
     public Patient() {

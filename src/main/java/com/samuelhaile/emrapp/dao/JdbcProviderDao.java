@@ -15,7 +15,7 @@ public class JdbcProviderDao implements ProviderDao {
     private JdbcTemplate jdbcTemplate;
     private JdbcPatientDao patientDao;
 
-    public JdbcProviderDao(JdbcPatientDao patientDao,JdbcTemplate jdbcTemplate ) {
+    public JdbcProviderDao(JdbcPatientDao patientDao, JdbcTemplate jdbcTemplate) {
 
         this.patientDao = patientDao;
         this.jdbcTemplate = jdbcTemplate;
@@ -78,7 +78,8 @@ public class JdbcProviderDao implements ProviderDao {
                 "VALUES (?, ?, ?) RETURNING provider_id;";
         Integer providerId = jdbcTemplate.queryForObject(sql, Integer.class, provider.getFirstName(), provider.getLastName(),
                 provider.getJobTitleId());
-        provider.setProviderId(providerId); ;
+        provider.setProviderId(providerId);
+        ;
         return provider;
     }
 
@@ -109,32 +110,29 @@ public class JdbcProviderDao implements ProviderDao {
         Integer patientProviderId = jdbcTemplate.queryForObject(sql, Integer.class, patientId, providerId);
 
 
-
     }
 
     @Override
     public List<Patient> listAllPatientsUnderProvider(int providerId) {
 
-            List<Patient> listOfPatientsUnderProvider = new ArrayList<>();
+        List<Patient> listOfPatientsUnderProvider = new ArrayList<>();
 
 
+        String sql = "SELECT patient.patient_id, first_name, last_name, birth_date, admit_date, pulse_rate,  " +
+                "                      respiration_rate, systolic_bp, diastolic_bp, sp_O2, temperature,  " +
+                "                     partial_thromboplastin_time, mobility_status_id   " +
+                "                    FROM patient " +
+                "                    JOIN patient_provider  " +
+                "                    ON patient.patient_id = patient_provider.patient_id " +
+                "                    WHERE patient_provider.provider_id = ?; ";
 
-            String sql ="SELECT patient.patient_id, first_name, last_name, birth_date, admit_date, pulse_rate,  " +
-                    "                      respiration_rate, systolic_bp, diastolic_bp, sp_O2, temperature,  " +
-                    "                     partial_thromboplastin_time, mobility_status_id   " +
-                    "                    FROM patient " +
-                    "                    JOIN patient_provider  " +
-                    "                    ON patient.patient_id = patient_provider.patient_id " +
-                    "                    WHERE patient_provider.provider_id = ?; ";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, providerId);
 
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, providerId);
-
-            while (results.next()) {
-                listOfPatientsUnderProvider.add(patientDao.mapRowToPatient(results));
-            }
-            return listOfPatientsUnderProvider;
+        while (results.next()) {
+            listOfPatientsUnderProvider.add(patientDao.mapRowToPatient(results));
         }
-
+        return listOfPatientsUnderProvider;
+    }
 
 
     private Provider mapRowToProvider(SqlRowSet row) {

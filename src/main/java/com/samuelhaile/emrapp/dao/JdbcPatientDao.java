@@ -19,8 +19,9 @@ import java.util.List;
 public class JdbcPatientDao implements PatientDao {
 
     private JdbcTemplate jdbcTemplate;
-/*Only jdbc template instance that springs creates here. For all daos. Spring injects it into
-    constructor here. We flag it with @Component (tells spring this dependency is injected here and wired to other daos as well*/
+
+    /*Only jdbc template instance that springs creates here. For all daos. Spring injects it into
+        constructor here. We flag it with @Component (tells spring this dependency is injected here and wired to other daos as well*/
     public JdbcPatientDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -28,13 +29,13 @@ public class JdbcPatientDao implements PatientDao {
 
     @Override
     public List<Patient> listAllPatients() {
-List<Patient> listOfPatients = new ArrayList<>();
+        List<Patient> listOfPatients = new ArrayList<>();
 
 
         String sql = "SELECT patient_id, first_name, last_name, birth_date, admit_date, pulse_rate, " +
                 "  respiration_rate, systolic_bp, diastolic_bp, sp_O2, temperature, " +
                 " partial_thromboplastin_time, mobility_status_id  " +
-               "FROM patient; ";
+                "FROM patient; ";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
@@ -51,10 +52,10 @@ List<Patient> listOfPatients = new ArrayList<>();
 
         String sql =
                 "SELECT patient_id, first_name, last_name, birth_date, admit_date, pulse_rate, " +
-                "                respiration_rate, systolic_bp, diastolic_bp, sp_O2, temperature,   " +
-                "                partial_thromboplastin_time, mobility_status_id   " +
-                "                FROM patient   " +
-                "                WHERE patient_id = ?; ";
+                        "                respiration_rate, systolic_bp, diastolic_bp, sp_O2, temperature,   " +
+                        "                partial_thromboplastin_time, mobility_status_id   " +
+                        "                FROM patient   " +
+                        "                WHERE patient_id = ?; ";
 
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
@@ -62,7 +63,7 @@ List<Patient> listOfPatients = new ArrayList<>();
         if (results.next()) {
             patient = mapRowToPatient(results);
         }
-            return patient;
+        return patient;
     }
 
     //Adds new patient object to database, which returns autoincremented id. id is set to patient object. Patient object returned.
@@ -75,11 +76,11 @@ List<Patient> listOfPatients = new ArrayList<>();
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING patient_id;";
         Integer patientId = jdbcTemplate.queryForObject(sql, Integer.class, patient.getFirstName(), patient.getLastName(),
                 patient.getBirthDate(), patient.getAdmitDate(),
-                patient.getPulseRate(),patient.getRespirationRate(),
+                patient.getPulseRate(), patient.getRespirationRate(),
                 patient.getSystolicBloodPressure(), patient.getDiastolicBloodPressure(),
-                patient.getsPO2(), patient.getTemperature(),patient.getPartialThromboplastinTime(),
+                patient.getsPO2(), patient.getTemperature(), patient.getPartialThromboplastinTime(),
                 patient.getMobilityStatusId());
-        patient.setPatientId(patientId) ;
+        patient.setPatientId(patientId);
         return patient;
     }
 
@@ -98,9 +99,9 @@ List<Patient> listOfPatients = new ArrayList<>();
 
         jdbcTemplate.update(sql, patient.getFirstName(), patient.getLastName(),
                 patient.getBirthDate(), patient.getAdmitDate(),
-                patient.getPulseRate(),patient.getRespirationRate(),
+                patient.getPulseRate(), patient.getRespirationRate(),
                 patient.getSystolicBloodPressure(), patient.getDiastolicBloodPressure(),
-                patient.getsPO2(), patient.getTemperature(),patient.getPartialThromboplastinTime(),
+                patient.getsPO2(), patient.getTemperature(), patient.getPartialThromboplastinTime(),
                 patient.getMobilityStatusId(), patient.getPatientId());
 
     }
@@ -127,7 +128,6 @@ List<Patient> listOfPatients = new ArrayList<>();
         return patient;
 
     }
-
 
 
 }

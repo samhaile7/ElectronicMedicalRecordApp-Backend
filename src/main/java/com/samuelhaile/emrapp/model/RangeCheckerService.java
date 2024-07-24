@@ -26,8 +26,7 @@ public class RangeCheckerService {
     public Patient assignPatientMobilityStatus(Patient patient) {
         if (valuesWithinRange(patient)) {
             patient.setMobilityStatusId(1);
-        }
-        else {
+        } else {
             patient.setMobilityStatusId(2);
         }
         return patient;
@@ -38,25 +37,32 @@ public class RangeCheckerService {
         boolean output = true;
         if (patient.getDiastolicBloodPressure() > MAX_DIASTOLIC_PRESSURE || patient.getDiastolicBloodPressure() < MIN_DIASTOLIC_PRESSURE) {
             output = false;
-        };
-        if (patient.getSystolicBloodPressure() > MAX_SYSTOLIC_PRESSURE || patient.getSystolicBloodPressure() < MIN_SYSTOLIC_PRESSURE){
+        }
+        ;
+        if (patient.getSystolicBloodPressure() > MAX_SYSTOLIC_PRESSURE || patient.getSystolicBloodPressure() < MIN_SYSTOLIC_PRESSURE) {
             output = false;
-        };
-        if (patient.getPartialThromboplastinTime() > MAX_PARTIAL_THROMBOPLASTIN_TIME || patient.getPartialThromboplastinTime() < MIN_PARTIAL_THROMBOPLASTIN_TIME){
+        }
+        ;
+        if (patient.getPartialThromboplastinTime() > MAX_PARTIAL_THROMBOPLASTIN_TIME || patient.getPartialThromboplastinTime() < MIN_PARTIAL_THROMBOPLASTIN_TIME) {
             output = false;
-        };
-        if (patient.getPulseRate() > MAX_PULSE || patient.getPulseRate() < MIN_PULSE){
+        }
+        ;
+        if (patient.getPulseRate() > MAX_PULSE || patient.getPulseRate() < MIN_PULSE) {
             output = false;
-        };
-        if (patient.getRespirationRate() > MAX_RESPIRATION_RATE || patient.getRespirationRate() < MIN_RESPIRATION_RATE){
+        }
+        ;
+        if (patient.getRespirationRate() > MAX_RESPIRATION_RATE || patient.getRespirationRate() < MIN_RESPIRATION_RATE) {
             output = false;
-        };
-        if (patient.getTemperature() > MAX_TEMPERATURE || patient.getTemperature() < MIN_TEMPERATURE){
+        }
+        ;
+        if (patient.getTemperature() > MAX_TEMPERATURE || patient.getTemperature() < MIN_TEMPERATURE) {
             output = false;
-        };
-        if (patient.getsPO2() < MIN_OXYGEN_SPO2){
+        }
+        ;
+        if (patient.getsPO2() < MIN_OXYGEN_SPO2) {
             output = false;
-        };
+        }
+        ;
 
         return output;
     }

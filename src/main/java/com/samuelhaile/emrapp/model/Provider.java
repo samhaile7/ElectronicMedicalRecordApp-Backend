@@ -8,7 +8,7 @@ public class Provider {
     private int providerId;
     @NotBlank(message = "First name required")
     private String firstName;
-    @NotBlank (message = "Last name required")
+    @NotBlank(message = "Last name required")
     private String lastName;
     private int jobTitleId;
 
