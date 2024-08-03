@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 @Component
 public class JdbcMobilityStatusDao implements MobilityStatusDao {
@@ -34,7 +35,7 @@ public class JdbcMobilityStatusDao implements MobilityStatusDao {
 
     @Override
     public List<MobilityStatus> listAllMobilityStatuses() {
-        List mobilityStatuses = null;
+        List<MobilityStatus> mobilityStatuses = new ArrayList<>();
         String sql = "SELECT mobility_status_id, mobility_status_description FROM mobility_status;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -49,7 +50,7 @@ public class JdbcMobilityStatusDao implements MobilityStatusDao {
         String sql = "SELECT mobility_status_id, mobility_status_description FROM mobility_status WHERE mobility_status_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, mobilityStatusId);
         if (results.next()) {
-            mapRowToMobilityStatus(results);
+            mobilityStatus = mapRowToMobilityStatus(results);
         }
         return mobilityStatus;
     }
