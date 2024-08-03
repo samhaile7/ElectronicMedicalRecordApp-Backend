@@ -3,10 +3,12 @@ package com.samuelhaile.emrapp.dao;
 import com.samuelhaile.emrapp.model.Job;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcJobDao implements JobDao {
 
     private JdbcTemplate jdbcTemplate;
