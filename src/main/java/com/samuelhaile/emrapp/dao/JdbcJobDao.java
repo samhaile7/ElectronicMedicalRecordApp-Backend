@@ -52,7 +52,7 @@ public class JdbcJobDao implements JobDao {
         String sql = "SELECT job_title_id, job_title_name FROM job_title WHERE job_title_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, jobId);
         if (results.next()) {
-            mapRowToJob(results);
+           job = mapRowToJob(results);
         }
         return job;
     }

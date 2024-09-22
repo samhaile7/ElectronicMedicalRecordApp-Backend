@@ -17,7 +17,10 @@ public class JobController {
     public JobController(JobDao jobDao) {
         this.jobDao = jobDao;
     }
-
+        @RequestMapping(path = "/jobs", method = RequestMethod.GET)
+    public List<Job> listAllJobs() {
+        return jobDao.listAllJobs();
+    }
     @RequestMapping(path = "/jobs/{jobId}", method = RequestMethod.GET)
     public Job getJobByJobId(@PathVariable int jobId) {
         Job job = jobDao.getJobByJobId(jobId);
