@@ -24,7 +24,10 @@ public class PatientController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String getTestMessage() {
-        return "Welcome to  PrimeEMR, auto!";
+        return "Welcome to  PrimeEMR!" +
+                "Swagger UI = http://52.165.130.176/:8080/swagger-ui/index.html" +
+                "H2 console = http://52.165.130.176/:8080/h2-console";
+
     }
 
     @RequestMapping(path = "/patients", method = RequestMethod.GET)
