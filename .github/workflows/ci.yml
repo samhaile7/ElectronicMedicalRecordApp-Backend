@@ -46,3 +46,23 @@ jobs:
           build-args: |
             VERSION=${{ env.VERSION }}
           tags: sammyhtb/prime-ehr:${{ env.VERSION }}
+      - name: Deploy to Azure VM
+        env:
+          AZURE_VM_IP: ${{ secrets.AZURE_VM_IP }}
+          AZURE_VM_USER: ${{ secrets.AZURE_VM_USER }}
+          AZURE_VM_SSH_KEY: ${{ secrets.AZURE_VM_SSH_KEY }}
+        run: |
+          echo "$AZURE_VM_SSH_KEY" > azure_vm_key.pem
+          chmod 600 azure_vm_key.pem
+          ssh -o StrictHostKeyChecking=no -i azure_vm_key.pem $AZURE_VM_USER@$AZURE_VM_IP << EOF
+            # Create a deployment log file if it doesn't exist
+            touch ~/deployment.log
+            # Log deployment start
+            echo "Deployment started on $(date)" >> ~/deployment.log
+          
+            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
+            docker pull sammyhtb/prime-ehr:${{ env.VERSION }}
+            docker stop prime-ehr-container || true
+            docker rm prime-ehr-container || true
+            docker run -d --name prime-ehr-container -p 8080:8080 sammyhtb/prime-ehr:${{ env.VERSION }}
+          EOF
