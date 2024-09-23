@@ -31,10 +31,9 @@ jobs:
 
       - name: Get  Version from pom.xml
         run: |
-          echo "VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-          echo "$VERSION"
-          ls 
-          ls target
+          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | tr -d '\r' | tr -d '%')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "VERSION=$VERSION"
           
 
       - name: Upload Artifact
