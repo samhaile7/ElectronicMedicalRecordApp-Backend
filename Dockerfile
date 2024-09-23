@@ -1,3 +1,4 @@
 FROM amazoncorretto:21-alpine
-COPY ./target/prime-ehr-*.jar app.jar
+ARG VERSION=1.0.0
+COPY ./target/prime-ehr-${VERSION}.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
