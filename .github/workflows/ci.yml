@@ -51,5 +51,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
+          build-args: VERSION=${{ env.VERSION }}
           tags: sammyhtb/prime-ehr:${{ env.VERSION }}
 
