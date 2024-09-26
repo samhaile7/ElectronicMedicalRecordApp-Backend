@@ -69,6 +69,13 @@
 			<version>2.3.232</version>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.spring.javaformat/spring-javaformat-maven-plugin -->
+		<dependency>
+			<groupId>io.spring.javaformat</groupId>
+			<artifactId>spring-javaformat-maven-plugin</artifactId>
+			<version>0.0.43</version>
+		</dependency>
+
 
 
 
@@ -80,6 +87,12 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+				<plugin>
+					<groupId>io.spring.javaformat</groupId>
+					<artifactId>spring-javaformat-maven-plugin</artifactId>
+					<version>0.0.43</version>
+				</plugin>
 		</plugins>
 	</build>
 

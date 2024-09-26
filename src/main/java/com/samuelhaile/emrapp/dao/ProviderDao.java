@@ -7,22 +7,20 @@ import java.util.List;
 
 public interface ProviderDao {
 
+	List<Provider> listAllProviders();
 
-    List<Provider> listAllProviders();
+	Provider getProviderById(int providerId);
 
-    Provider getProviderById(int providerId);
+	String getProviderRole(int provider);
 
-    String getProviderRole(int provider);
+	Provider createProvider(Provider provider);
 
-    Provider createProvider(Provider provider);
+	void deleteProvider(int providerId);
 
-    void deleteProvider(int providerId);
+	void updateProvider(Provider provider);
 
-    void updateProvider(Provider provider);
+	void pickUpPatient(int patientId, int providerId);
 
-    void pickUpPatient(int patientId, int providerId);
-
-    List<Patient> listAllPatientsUnderProvider(int providerId);
-
+	List<Patient> listAllPatientsUnderProvider(int providerId);
 
 }

@@ -6,16 +6,14 @@ import java.util.List;
 
 public interface PatientDao {
 
+	List<Patient> listAllPatients();
 
-    List<Patient> listAllPatients();
+	Patient getPatientById(int patientId);
 
-    Patient getPatientById(int patientId);
+	Patient createPatient(Patient patient);
 
-    Patient createPatient(Patient patient);
+	void deletePatient(int patientId);
 
-    void deletePatient(int patientId);
-
-    void updatePatient(Patient patient);
-
+	void updatePatient(Patient patient);
 
 }

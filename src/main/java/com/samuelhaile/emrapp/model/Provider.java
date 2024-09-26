@@ -4,52 +4,55 @@ import jakarta.validation.constraints.NotBlank;
 
 public class Provider {
 
+	private int providerId;
 
-    private int providerId;
-    @NotBlank(message = "First name required")
-    private String firstName;
-    @NotBlank(message = "Last name required")
-    private String lastName;
-    private int jobTitleId;
+	@NotBlank(message = "First name required")
+	private String firstName;
 
-    public Provider() {
-    }
+	@NotBlank(message = "Last name required")
+	private String lastName;
 
-    public Provider(String firstName, String lastName, int jobTitleId) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.jobTitleId = jobTitleId;
-    }
+	private int jobTitleId;
 
-    public int getProviderId() {
-        return providerId;
-    }
+	public Provider() {
+	}
 
-    public void setProviderId(int providerId) {
-        this.providerId = providerId;
-    }
+	public Provider(String firstName, String lastName, int jobTitleId) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.jobTitleId = jobTitleId;
+	}
 
-    public String getFirstName() {
-        return firstName;
-    }
+	public int getProviderId() {
+		return providerId;
+	}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	public void setProviderId(int providerId) {
+		this.providerId = providerId;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public int getJobTitleId() {
-        return jobTitleId;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public void setJobTitleId(int jobTitleId) {
-        this.jobTitleId = jobTitleId;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public int getJobTitleId() {
+		return jobTitleId;
+	}
+
+	public void setJobTitleId(int jobTitleId) {
+		this.jobTitleId = jobTitleId;
+	}
+
 }

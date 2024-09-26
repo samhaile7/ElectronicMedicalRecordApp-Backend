@@ -1,38 +1,39 @@
 package com.samuelhaile.emrapp.model;
 
 public class MobilityStatus {
-    int mobilityStatusId;
-    String mobilityStatusDescription;
 
-    public MobilityStatus(int mobilityStatusId, String mobilityStatusDescription) {
-        this.mobilityStatusId = mobilityStatusId;
-        this.mobilityStatusDescription = mobilityStatusDescription;
-    }
+	int mobilityStatusId;
 
-    public MobilityStatus() {
-    }
+	String mobilityStatusDescription;
 
-    public int getMobilityStatusId() {
-        return mobilityStatusId;
-    }
+	public MobilityStatus(int mobilityStatusId, String mobilityStatusDescription) {
+		this.mobilityStatusId = mobilityStatusId;
+		this.mobilityStatusDescription = mobilityStatusDescription;
+	}
 
-    public void setMobilityStatusId(int mobilityStatusId) {
-        this.mobilityStatusId = mobilityStatusId;
-    }
+	public MobilityStatus() {
+	}
 
-    public String getMobilityStatusDescription() {
-        return mobilityStatusDescription;
-    }
+	public int getMobilityStatusId() {
+		return mobilityStatusId;
+	}
 
-    public void setMobilityStatusDescription(String mobilityStatusDescription) {
-        this.mobilityStatusDescription = mobilityStatusDescription;
-    }
+	public void setMobilityStatusId(int mobilityStatusId) {
+		this.mobilityStatusId = mobilityStatusId;
+	}
 
-    @Override
-    public String toString() {
-        return "MobilityStatus{" +
-                "mobilityStatusId=" + mobilityStatusId +
-                ", mobilityStatusDescription='" + mobilityStatusDescription + '\'' +
-                '}';
-    }
+	public String getMobilityStatusDescription() {
+		return mobilityStatusDescription;
+	}
+
+	public void setMobilityStatusDescription(String mobilityStatusDescription) {
+		this.mobilityStatusDescription = mobilityStatusDescription;
+	}
+
+	@Override
+	public String toString() {
+		return "MobilityStatus{" + "mobilityStatusId=" + mobilityStatusId + ", mobilityStatusDescription='"
+				+ mobilityStatusDescription + '\'' + '}';
+	}
+
 }

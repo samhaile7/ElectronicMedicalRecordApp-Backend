@@ -2,38 +2,37 @@ package com.samuelhaile.emrapp.model;
 
 public class Job {
 
-    private int jobId;
-    private String jobName;
+	private int jobId;
 
-    public Job(int jobId, String jobName) {
-        this.jobId = jobId;
-        this.jobName = jobName;
-    }
+	private String jobName;
 
-    public Job() {
-    }
+	public Job(int jobId, String jobName) {
+		this.jobId = jobId;
+		this.jobName = jobName;
+	}
 
-    public int getJobId() {
-        return jobId;
-    }
+	public Job() {
+	}
 
-    public void setJobId(int jobId) {
-        this.jobId = jobId;
-    }
+	public int getJobId() {
+		return jobId;
+	}
 
-    public String getJobName() {
-        return jobName;
-    }
+	public void setJobId(int jobId) {
+		this.jobId = jobId;
+	}
 
-    public void setJobName(String jobName) {
-        this.jobName = jobName;
-    }
+	public String getJobName() {
+		return jobName;
+	}
 
-    @Override
-    public String toString() {
-        return "Job{" +
-                "jobId=" + jobId +
-                ", jobName='" + jobName + '\'' +
-                '}';
-    }
+	public void setJobName(String jobName) {
+		this.jobName = jobName;
+	}
+
+	@Override
+	public String toString() {
+		return "Job{" + "jobId=" + jobId + ", jobName='" + jobName + '\'' + '}';
+	}
+
 }

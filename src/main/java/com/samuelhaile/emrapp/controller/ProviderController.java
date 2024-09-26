@@ -1,6 +1,5 @@
 package com.samuelhaile.emrapp.controller;
 
-
 import com.samuelhaile.emrapp.dao.PatientDao;
 import com.samuelhaile.emrapp.dao.ProviderDao;
 import com.samuelhaile.emrapp.model.Patient;
@@ -15,65 +14,66 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class ProviderController {
-    private ProviderDao providerDao;
 
-    public ProviderController(ProviderDao providerDao) {
-        this.providerDao = providerDao;
-    }
+	private ProviderDao providerDao;
 
-    @RequestMapping(path = "/providers/{providerId}/patients", method = RequestMethod.GET)
-    public List<Patient> getAllPatientsByProvider(@PathVariable int providerId) {
-        return providerDao.listAllPatientsUnderProvider(providerId);
-    }
+	public ProviderController(ProviderDao providerDao) {
+		this.providerDao = providerDao;
+	}
 
-    @RequestMapping(path = "/providers/{providerId}/role", method = RequestMethod.GET)
-    public String getProviderRoleByProviderId(@PathVariable int providerId) {
-        return providerDao.getProviderRole(providerId);
-    }
+	@RequestMapping(path = "/providers/{providerId}/patients", method = RequestMethod.GET)
+	public List<Patient> getAllPatientsByProvider(@PathVariable int providerId) {
+		return providerDao.listAllPatientsUnderProvider(providerId);
+	}
 
-    @RequestMapping(path = "/providers", method = RequestMethod.GET)
-    public List<Provider> listAllProviders() {
-        return providerDao.listAllProviders();
-    }
+	@RequestMapping(path = "/providers/{providerId}/role", method = RequestMethod.GET)
+	public String getProviderRoleByProviderId(@PathVariable int providerId) {
+		return providerDao.getProviderRole(providerId);
+	}
 
-    @RequestMapping(path = "/providers/{providerId}", method = RequestMethod.GET)
-    public Provider getProviderById(@PathVariable int providerId) {
-        Provider provider = providerDao.getProviderById(providerId);
-        if (provider == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
-        } else {
-            return provider;
-        }
-    }
+	@RequestMapping(path = "/providers", method = RequestMethod.GET)
+	public List<Provider> listAllProviders() {
+		return providerDao.listAllProviders();
+	}
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/providers", method = RequestMethod.POST)
-    public Provider createProvider(@RequestBody @Valid Provider newProvider) {
-        return providerDao.createProvider(newProvider);
-    }
+	@RequestMapping(path = "/providers/{providerId}", method = RequestMethod.GET)
+	public Provider getProviderById(@PathVariable int providerId) {
+		Provider provider = providerDao.getProviderById(providerId);
+		if (provider == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
+		}
+		else {
+			return provider;
+		}
+	}
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/providers/{providerId}/pickup", method = RequestMethod.POST)
-    public void pickupPatient(@RequestBody @Valid Patient patient, @PathVariable int providerId) {
-         providerDao.pickUpPatient(patient.getPatientId(), providerId);
-    }
+	@ResponseStatus(HttpStatus.CREATED)
+	@RequestMapping(path = "/providers", method = RequestMethod.POST)
+	public Provider createProvider(@RequestBody @Valid Provider newProvider) {
+		return providerDao.createProvider(newProvider);
+	}
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/providers/{providerId}", method = RequestMethod.DELETE)
-    public void deleteProvider( @PathVariable int providerId) {
-        if (providerDao.getProviderById(providerId) == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
-        }
-        providerDao.deleteProvider(providerId);
-    }
+	@ResponseStatus(HttpStatus.CREATED)
+	@RequestMapping(path = "/providers/{providerId}/pickup", method = RequestMethod.POST)
+	public void pickupPatient(@RequestBody @Valid Patient patient, @PathVariable int providerId) {
+		providerDao.pickUpPatient(patient.getPatientId(), providerId);
+	}
 
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@RequestMapping(path = "/providers/{providerId}", method = RequestMethod.DELETE)
+	public void deleteProvider(@PathVariable int providerId) {
+		if (providerDao.getProviderById(providerId) == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
+		}
+		providerDao.deleteProvider(providerId);
+	}
 
-    @RequestMapping(path = "/providers", method = RequestMethod.PUT)
-    public void updateProvider( @RequestBody @Valid  Provider providerToUpdate) {
-        if (providerDao.getProviderById(providerToUpdate.getProviderId()) == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
-        }
-        providerDao.updateProvider(providerToUpdate);
-    }
+	@RequestMapping(path = "/providers", method = RequestMethod.PUT)
+	public void updateProvider(@RequestBody @Valid Provider providerToUpdate) {
+		if (providerDao.getProviderById(providerToUpdate.getProviderId()) == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Provider Not Found");
+		}
+		providerDao.updateProvider(providerToUpdate);
+	}
 
 }

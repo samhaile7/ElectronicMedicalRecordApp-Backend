@@ -5,13 +5,15 @@ import com.samuelhaile.emrapp.model.Job;
 import java.util.List;
 
 public interface JobDao {
-    Job createJob(Job job);
 
-    void updateJob(Job job);
+	Job createJob(Job job);
 
-    List<Job> listAllJobs();
+	void updateJob(Job job);
 
-    Job getJobByJobId(int jobId);
+	List<Job> listAllJobs();
 
-    void deleteJob(int jobId);
+	Job getJobByJobId(int jobId);
+
+	void deleteJob(int jobId);
+
 }

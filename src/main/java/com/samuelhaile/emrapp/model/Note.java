@@ -4,59 +4,59 @@ import java.time.LocalDate;
 
 public class Note {
 
-    private int noteId;
-    private int patientId;
-    private String noteDetails;
-    private LocalDate dateNoteAdded;
+	private int noteId;
 
-    public Note() {
-    }
+	private int patientId;
 
-    public Note(int patientId, String noteDetails, LocalDate dateNoteAdded) {
-        this.patientId = patientId;
-        this.noteDetails = noteDetails;
-        this.dateNoteAdded = dateNoteAdded;
-    }
+	private String noteDetails;
 
-    public int getNoteId() {
-        return noteId;
-    }
+	private LocalDate dateNoteAdded;
 
-    public void setNoteId(int noteId) {
-        this.noteId = noteId;
-    }
+	public Note() {
+	}
 
-    public int getPatientId() {
-        return patientId;
-    }
+	public Note(int patientId, String noteDetails, LocalDate dateNoteAdded) {
+		this.patientId = patientId;
+		this.noteDetails = noteDetails;
+		this.dateNoteAdded = dateNoteAdded;
+	}
 
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
-    }
+	public int getNoteId() {
+		return noteId;
+	}
 
-    public String getNoteDetails() {
-        return noteDetails;
-    }
+	public void setNoteId(int noteId) {
+		this.noteId = noteId;
+	}
 
-    public void setNoteDetails(String noteDetails) {
-        this.noteDetails = noteDetails;
-    }
+	public int getPatientId() {
+		return patientId;
+	}
 
-    public LocalDate getDateNoteAdded() {
-        return dateNoteAdded;
-    }
+	public void setPatientId(int patientId) {
+		this.patientId = patientId;
+	}
 
-    public void setDateNoteAdded(LocalDate dateNoteAdded) {
-        this.dateNoteAdded = dateNoteAdded;
-    }
+	public String getNoteDetails() {
+		return noteDetails;
+	}
 
-    @Override
-    public String toString() {
-        return "Note{" +
-                "noteId=" + noteId +
-                ", patientId=" + patientId +
-                ", noteDetails='" + noteDetails + '\'' +
-                ", dateNoteAdded=" + dateNoteAdded +
-                '}';
-    }
+	public void setNoteDetails(String noteDetails) {
+		this.noteDetails = noteDetails;
+	}
+
+	public LocalDate getDateNoteAdded() {
+		return dateNoteAdded;
+	}
+
+	public void setDateNoteAdded(LocalDate dateNoteAdded) {
+		this.dateNoteAdded = dateNoteAdded;
+	}
+
+	@Override
+	public String toString() {
+		return "Note{" + "noteId=" + noteId + ", patientId=" + patientId + ", noteDetails='" + noteDetails + '\''
+				+ ", dateNoteAdded=" + dateNoteAdded + '}';
+	}
+
 }

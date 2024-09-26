@@ -12,20 +12,22 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class MobilityStatusController {
-    MobilityStatusDao mobilityStatusDao;
-    public MobilityStatusController(MobilityStatusDao mobilityStatusDao) {
-        this.mobilityStatusDao = mobilityStatusDao;
-    }
 
-    @RequestMapping(path = "/mobilitystatus")
-    public List<MobilityStatus> getAllMobilityStatuses() {
-        return mobilityStatusDao.listAllMobilityStatuses();
+	MobilityStatusDao mobilityStatusDao;
 
-    }
-    @RequestMapping(path = "/mobilitystatus/{mobilityStatusId}")
-    public MobilityStatus getMobilityStatusByMobilityStatusId(int mobilityStatusId) {
-        return mobilityStatusDao.getMobilityStatusById(mobilityStatusId);
-    }
+	public MobilityStatusController(MobilityStatusDao mobilityStatusDao) {
+		this.mobilityStatusDao = mobilityStatusDao;
+	}
 
+	@RequestMapping(path = "/mobilitystatus")
+	public List<MobilityStatus> getAllMobilityStatuses() {
+		return mobilityStatusDao.listAllMobilityStatuses();
+
+	}
+
+	@RequestMapping(path = "/mobilitystatus/{mobilityStatusId}")
+	public MobilityStatus getMobilityStatusByMobilityStatusId(int mobilityStatusId) {
+		return mobilityStatusDao.getMobilityStatusById(mobilityStatusId);
+	}
 
 }
